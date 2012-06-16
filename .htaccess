@@ -1,6 +1,10 @@
 # -- PHP Slim rewrite --
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
+  RewriteRule ^css/(.*) public/css/$1 [L]
+  RewriteRule ^js/(.*) public/js/$1 [L]
+  RewriteRule ^images/(.*) public/images/$1 [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ bootstrap.php [QSA,L]
 </IfModule>
