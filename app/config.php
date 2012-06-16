@@ -28,10 +28,10 @@ if($_SERVER['SERVER_NAME'] == 'boxfool.dev') {
 // -- live production settings
 else {
 	c::set('env', 'production');
-	c::set('db.host', 'localhose');
-	c::set('db.name', 'chicky-dev');
+	c::set('db.host', 'localhost');
+	c::set('db.name', 'boxfooldb');
 	c::set('db.user', 'root');
-	c::set('db.pass', '');
+	c::set('db.pass', 'lemonsqueezy');
 	c::set('base_url', 'http://boxfool.com');
 }
 
