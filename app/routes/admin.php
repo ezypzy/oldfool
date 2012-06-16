@@ -7,7 +7,7 @@
 
 $app->get('/adm/', 'admin');
 function admin() {
-	global $app, $v;
+	global $app, $db, $v;
 	// -- if logged in redirect to admin dashboard
 
 	// -- else redirect to login
@@ -18,7 +18,7 @@ function admin() {
 // -- login into admin panel
 $app->get('/adm/login/', 'admin_login');
 function admin_login() {
-	global $app, $v;
+	global $app, $db, $v;
 	// -- if logged in then redirect to dashboard
 
 	$v['window_title'] = 'Boxfool - admin';
@@ -31,3 +31,7 @@ function admin_login() {
 
 
 // -- add admin
+$app->get('/adm/add/', 'admin_add');
+function admin_add() {
+	echo sha1('b0xst4rs');
+}

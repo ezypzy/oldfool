@@ -16,6 +16,8 @@ require_once 'app/helpers/view.php';
 require_once 'app/helpers/session.php';
 
 // -- init database connection
+$db = new Database();
+$db->connect();
 
 // -- init session 
 
