@@ -18,9 +18,11 @@ function admin() {
 // -- login into admin panel
 $app->get('/adm/login/', 'admin_login');
 function admin_login() {
+	global $app, $v;
 	// -- if logged in then redirect to dashboard
 
 	$v['window_title'] = 'Boxfool - admin';
+	$v['adm_page'] = 'login';
 
 	$app->render('admin/layout', $v);
 }
