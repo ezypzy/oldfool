@@ -21,8 +21,8 @@ require_once 'app/helpers/session.php';
 
 // -- init app
 $app = new Slim(array(
-	'view' => new RainView(),
-	'templates.path' => '../views'
+	'view'              =>  new RainView(),
+	'templates.path'    =>  '../views'
 ));
 
 // -- init the view data
@@ -32,7 +32,8 @@ $v = array(
 );
 
 $app->get('/', function() use($app, $v) {
-	echo 'landing page';
+	//echo 'landing page';
+    $app->render('landing',$v);
 });
 
 $app->run();
