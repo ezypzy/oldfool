@@ -22,10 +22,23 @@ function admin_login() {
 	// -- if logged in then redirect to dashboard
 
 	$v['window_title'] = 'Boxfool - admin';
-	$v['adm_page'] = 'login';
+	$v['adm_page'] = 'admin/login';
 
 	$app->render('admin/layout', $v);
 }
+
+
+$app->get('/adm/boxes/', 'admin_login');
+function admin_boxes() {
+	global $app, $db, $v;
+	// -- if logged in then redirect to dashboard
+
+	$v['window_title'] = 'Boxfool - admin';
+	$v['adm_page'] = 'admin/boxes';
+
+	$app->render('admin/layout', $v);
+}
+
 
 
 
