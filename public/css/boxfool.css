@@ -8,9 +8,12 @@ body {
     padding: 20px;
     padding-bottom:0;
     margin:0;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 0px 0px rgba(0, 0, 0, 0.5);
 }
 header {
     position:relative;
+    margin-bottom: 74px !important;
 }
 .bigcap-condensed {
     color: #523e21;
@@ -26,7 +29,7 @@ header {
     height: 78px;
     background: url(../images/logo.png) no-repeat;
     text-indent: -99999px;
-    overflow: hidden;
+    position: relative;
     text-align: center;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -37,10 +40,17 @@ header {
     height: 92px;
     background: url(../images/beta.png) no-repeat;
     overflow: hidden;
+<<<<<<< HEAD
+    margin: 0 auto;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 274px;
+=======
     text-align: center;
     margin: 0 auto;
     position: absolute;
     margin-left: 268px;
+>>>>>>> 60bc6fb7651b996336654092564d6b7e7e9766c1
 }
 .string {
     position: absolute;
@@ -82,20 +92,22 @@ header {
     margin-top: 10px;
 }
 
-.footer-sep {
-    display:block;
-    width:100%;
-    height: 10px;
-    background: url(../images/stringborder.png) repeat-x;
-}
 footer {
     margin: 0 auto;
     margin-top:-2px;
     text-align: left;
-    color: #909090;
-    font-size: 0.9em;
+    color: #ccaf85;
     background: #262015;
     min-height: 100px;
+}
+
+footer .content {
+    padding: 10px;
+}
+
+footer a {
+    color: #FF207A;
+    font-weight: bold;
 }
 
 .modal {
@@ -119,9 +131,130 @@ footer {
 }
 
 .bottom-content .content {
-    padding: 0 10px;
+    padding: 0 10px 10px 20px;
     text-align: center;
+}
+.bottom-content .col {
+    background: url(../images/footer_hsep.png) no-repeat;
+    background-position: top left;
+}
+.bottom-content .content h3 {
+    text-transform: uppercase;
 }
 .content p {
     text-align: left;
 }
+<<<<<<< HEAD
+
+.featured {
+    margin: 0 auto;
+    width: 835px;
+    height: 292px;
+    background: url(../images/feature_bg.png) no-repeat;
+    margin-bottom: 90px;
+}
+.featured .box {
+    position: relative;
+    margin:0 auto;
+    width: 597px;
+    height: 285px;
+}
+.featured .box-top {
+    background: url(../images/box_top.gif) no-repeat;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:1;
+    width: 597px;
+    height: 145px;
+}
+.featured .box-bottom {
+    background: url(../images/box_bottom.gif) no-repeat;
+    position: absolute;
+    top:145px;
+    left:0;
+    z-index:5;
+    width: 597px;
+    height: 140px;
+}
+.featured ul.boxstars {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    z-index: 6;
+    width:100%;
+    display: block;
+    margin-top: -10px;
+}
+.featured ul.boxstars li {
+    position: relative;
+    margin: 0 20px;
+}
+
+.featured .boxstars li:first-child,
+.featured .boxstars li.first {
+    float: left;
+}
+
+.featured .boxstars li:last-child,
+.featured .boxstars li.last {
+    float: right;
+}
+
+.featured ul.boxstars .learnmore {
+    text-indent: -99999px;
+    display:block;
+    text-decoration: none;
+    outline: none;
+    width:91px;
+    height: 27px;
+    overflow: hidden;
+    position: absolute;
+    bottom:0;
+    margin-bottom: -15px;
+    background: url(../images/learnmore.png) no-repeat;
+}
+.featured .boxstars li:first-child .learnmore,
+.featured .boxstars li.first .learmore {
+    left: 0;
+}
+
+.featured .boxstars li:last-child .learnmore,
+.featured .boxstars li.last .learmore {
+    right: 0;
+}
+
+.featured blockquote {
+    max-width: 203px;
+    max-height: 64px;
+    overflow: auto;
+    margin:0;
+    margin-top: 25px;
+    border: none !important;
+    border-left: 0;
+}
+.featured .quote-left {
+    float: left;
+    margin-left: 10px;
+}
+.featured .quote-right {
+    float: right;
+    text-align: left;
+    margin-right:17px;
+}
+.featured-banner {
+    position: absolute;
+    z-index:7;
+    width:690px;
+    height:64px;
+    top: 234px;
+    margin-left: -47px;
+    background: url(../images/featured_banner.png) no-repeat;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 16px;
+}
+=======
+>>>>>>> 60bc6fb7651b996336654092564d6b7e7e9766c1
