@@ -22,14 +22,25 @@ header {
 }
 .logo {
     display: block;
-    width: 291px;
-    height: 76px;
+    width: 264px;
+    height: 78px;
     background: url(../images/logo.png) no-repeat;
     text-indent: -99999px;
     overflow: hidden;
     text-align: center;
     margin: 0 auto;
     margin-bottom: 10px;
+}
+.beta {
+    display: block;
+    width: 66px;
+    height: 92px;
+    background: url(../images/beta.png) no-repeat;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    margin-left: 268px;
 }
 .string {
     position: absolute;
@@ -42,13 +53,13 @@ header {
 }
 
 .home {
-    
+
 }
 
 .home .foolbox {
     margin-top: 50px;
     margin-bottom: 30px;
-    
+
 }
 
 .centered {
