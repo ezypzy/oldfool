@@ -33,8 +33,8 @@ $v = array(
 
 $app->get('/', 'landing');
 function landing() {
-	global $v;
-	$app = Slim::getInstance();
+	global $v, $app;
+    $v['page']  =   'test';
 	$app->render('landing', $v);
 }
 
