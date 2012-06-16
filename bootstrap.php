@@ -28,13 +28,14 @@ $app = new Slim(array(
 // -- init the view data
 $v = array(
 	'base_url' => c::get('base_url'),
+    'page'          => 'blank',
 	'window_title' => 'Boxfool of awesomeness'
 );
 
 $app->get('/', 'landing');
 function landing() {
 	global $v, $app;
-    $v['page']  =   'test';
+    //$v['page']  =   'test';
 	$app->render('landing', $v);
 }
 
