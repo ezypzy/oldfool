@@ -40,10 +40,17 @@ header {
     height: 92px;
     background: url(../images/beta.png) no-repeat;
     overflow: hidden;
+<<<<<<< HEAD
     margin: 0 auto;
     position: absolute;
     margin-top: -20px;
     margin-left: 274px;
+=======
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    margin-left: 268px;
+>>>>>>> 60bc6fb7651b996336654092564d6b7e7e9766c1
 }
 .string {
     position: absolute;
@@ -137,6 +144,7 @@ footer a {
 .content p {
     text-align: left;
 }
+<<<<<<< HEAD
 
 .featured {
     margin: 0 auto;
@@ -248,3 +256,5 @@ footer a {
     text-align: center;
     padding-top: 16px;
 }
+=======
+>>>>>>> 60bc6fb7651b996336654092564d6b7e7e9766c1

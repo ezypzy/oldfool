@@ -16,6 +16,8 @@ require_once 'app/helpers/view.php';
 require_once 'app/helpers/session.php';
 
 // -- init database connection
+$db = new Database();
+$db->connect();
 
 // -- init session
 
@@ -42,6 +44,7 @@ function landing() {
     $app->render('landing', $v);
 }
 
+require 'app/routes/admin.php';
 require 'app/routes/boxes.php';
 
 $app->run();
