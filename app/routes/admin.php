@@ -26,3 +26,8 @@ function admin_login() {
 
 	$app->render('admin/layout', $v);
 }
+
+
+
+
+// -- add admin
