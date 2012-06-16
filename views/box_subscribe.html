@@ -1,3 +1,42 @@
 <p>This is the subscrition page for "Boxfool of {$box_name}"</p>
 
+<form action="" method="post" accept-charset="utf-8">
+	<p>
+		<label for="name">Name</label>
+		<input type="text" name="name" value="" id="name">
+	</p>
+	<p>
+		<label for="email">Email</label>
+		<input type="text" name="email" value="" id="email">		
+	</p>
+	<p>
+		<label for="shipto">Ship to</label>
+		<input type="text" name="address1" value="">
+		<input type="text" name="address2" value="">
+		<input type="text" name="address3" value="">
+		<label for="postcode">Postcode</label>
+		<input type="text" name="postcode" value="">
+		<label for="city">City</label>
+		<input type="text" name="city" value="">
+		<!-- maybe do a drop down? fix it to Klang Vally? -->
+		<label for="state">State</label>
+		<input type="text" name="some_name" value="">
+		<!-- maybe just fix this to Malaysia>? -->
+		<label for="country">Country</label>
+		<input type="text" name="country" value="">
+	</p>
+	<p><input type="submit" value="Payment &rarr;"></p>
+</form>
+
+<!-- box information container start -->
+<div class="boxInformationContainer">
+	<p>Subscribing to <span>Boxfool of {$box_name}</span></p>
+
+	<img src="" atl="photo of boxstar">
+
+	<p>{$box_description}</p>
+
+	<p>RM {$box_price}</p>
+</div><!-- box information container ends -->
+
 
