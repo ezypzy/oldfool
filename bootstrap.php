@@ -21,8 +21,8 @@ require_once 'app/helpers/session.php';
 
 // -- init app
 $app = new Slim(array(
-	'view'              =>  new RainView(),
-	'templates.path'    =>  '../views'
+	'view' => new RainView(),
+	'templates.path' => '../views'
 ));
 
 // -- init the view data
@@ -31,9 +31,10 @@ $v = array(
 	'window_title' => 'Boxfool of awesomeness'
 );
 
-$app->get('/', function() use($app, $v) {
-	//echo 'landing page';
-    $app->render('landing',$v);
-});
+$app->get('/', 'landing');
+function landing() {
+	global $v, $app;
+	$app->render('landing', $v);
+}
 
 $app->run();
