@@ -38,4 +38,6 @@ function landing() {
 	$app->render('landing', $v);
 }
 
+require 'app/routes/boxes.php';
+
 $app->run();
