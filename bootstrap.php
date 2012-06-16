@@ -31,8 +31,11 @@ $v = array(
 	'window_title' => 'Boxfool of awesomeness'
 );
 
-$app->get('/', function() use($app, $v) {
-	echo 'landing page';
-});
+$app->get('/', 'landing');
+function landing() {
+	global $v;
+	$app = Slim::getInstance();
+	$app->render('landing', $v);
+}
 
 $app->run();
