@@ -23,8 +23,8 @@ $db->connect();
 
 // -- init app
 $app = new Slim(array(
-    'view' => new RainView(),
-    'templates.path' => '../views'
+    'view'              =>  new RainView(),
+    'templates.path'    =>  '../views'
 ));
 
 // Change cache dir from "tmp" to "cache"
@@ -32,9 +32,10 @@ RainTPL::$cache_dir =   'cache';
 
 // -- init the view data
 $v = array(
-    'base_url' => c::get('base_url'),
-    'page'          => 'blank',
-    'window_title' => 'Boxfool of awesomeness'
+    'base_url'      =>  c::get('base_url'),
+    'breadcrumb'    =>  'breadcrumb',
+    'page'          =>  'blank',
+    'window_title'  =>  'Boxfool of awesomeness'
 );
 
 function debug($args)
@@ -45,19 +46,23 @@ function debug($args)
 }
 
 $base_template  =   'layout';
+$page_template  =   'page';
 
 $app->get('/', 'landing');
-function landing() {
+function landing()
+{
     global $v, $app,$base_template;
     $v['page']    =   'landing';
     $app->render($base_template, $v);
 }
 
 $app->get('/boxfools-of-:page', 'boxstarpage');
-function boxstarpage($page) {
-    global $v, $app,$base_template;
+function boxstarpage($page)
+{
+    global $v, $app, $page_template;
     $v['page']  =   'boxfoolof'.$page;
-    $app->render($base_template, $v);
+
+    $app->render($page_template, $v);
 }
 
 require 'app/routes/admin.php';

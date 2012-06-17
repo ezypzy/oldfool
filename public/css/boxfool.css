@@ -9,7 +9,6 @@ body {
 }
 header {
     position:relative;
-    margin-bottom: 74px !important;
 }
 .bigcap-condensed {
     color: #523e21;
@@ -55,6 +54,11 @@ header {
     color: #694a1e;
     font-weight: bold;
     font-size:1.5em;
+}
+
+.main-content {
+    background-color: white;
+
 }
 
 footer {
@@ -183,6 +187,7 @@ footer .copy {
     height: 292px;
     background: url(../images/feature_bg.png) no-repeat;
     margin-bottom: 90px;
+    margin-top: 74px;
 }
 .featured .box {
     position: relative;
