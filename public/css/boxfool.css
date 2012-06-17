@@ -1,5 +1,5 @@
 body {
-    
+
     color: #523e21;
     background: url(../images/bg.jpg);
     padding: 0;
@@ -17,7 +17,9 @@ header #login_link {
     z-index:1;
     right:0;
     top: 50%;
-    color: black;
+    font-weight: bold;
+    font-size: 1.6em;
+    color: #523e21;
     text-decoration: none;
 }
 .caps {
@@ -71,7 +73,7 @@ header #login_link {
 
 .main-content {
     background-color: white;
-
+    text-align: justify;
 }
 
 footer {
@@ -163,7 +165,7 @@ img.center {
 }
 .bottom-content .content {
     padding: 45px 10px 30px 20px;
-    text-align: left;
+    text-align: justify;;
 }
 .bottom-content .col {
     background: url(../images/footer_hsep.png) no-repeat;
@@ -195,7 +197,7 @@ img.center {
 }
 
 .content p {
-    text-align: left;
+    text-align: justify;
 }
 
 .featured {
@@ -430,4 +432,34 @@ ul.social-links li {
     margin-left:auto;
     margin-right: auto;
     text-align: center;
+}
+#tweets {
+    color: white;
+}
+#tweets i.user {
+    font-style: normal;
+    color: #00A3CB;
+    font-weight: bold;
+}
+#tweets time {
+    color: #B73B21;
+    font-style: oblique;
+}
+#tweets article {
+    border-bottom: 1px dashed #382f1f;
+    margin-bottom: 6px;
+    padding-top:5px;
+    padding-bottom: 10px;
+}
+#tweets article:first-child,
+#tweets article.first {
+
+}
+#tweets article:last-child,
+#tweets article.last {
+    border: none;
+}
+#tweets article p {
+    margin:0;
+    padding:0;
 }

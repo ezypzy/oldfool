@@ -36,6 +36,7 @@ $v = array(
     'breadcrumb'    =>  'breadcrumb',
     'is_home'       =>  false,
     'page'          =>  'blank',
+    'tweetfools'    =>  'tweetfools',
     'window_title'  =>  'Boxfool of awesomeness'
 );
 
