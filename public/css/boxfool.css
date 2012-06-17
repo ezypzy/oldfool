@@ -1,19 +1,14 @@
 body {
     color: #523e21;
-    /*
-    background-color: #3d3d3d;
-    color: #eee;
-    */
     background: url(../images/bg.jpg);
-    padding: 20px;
+    padding: 0;
     padding-bottom:0;
     margin:0;
     -webkit-font-smoothing: antialiased;
-    text-shadow: 1px 0px 0px rgba(0, 0, 0, 0.5);
+    /*text-shadow: 1px 0px 0px rgba(0, 0, 0, 0.5);*/
 }
 header {
     position:relative;
-    margin-bottom: 74px !important;
 }
 .bigcap-condensed {
     color: #523e21;
@@ -23,11 +18,15 @@ header {
     font-weight: bold;
     font-size: 3em;
 }
+.sprite {
+    background-image: url(../images/sprite.png);
+    background-repeat: no-repeat;
+}
 .logo {
     display: block;
     width: 264px;
     height: 78px;
-    background: url(../images/logo.png) no-repeat;
+    background-position: -225px 0;
     text-indent: -99999px;
     position: relative;
     text-align: center;
@@ -38,38 +37,12 @@ header {
     display: block;
     width: 66px;
     height: 92px;
-    background: url(../images/beta.png) no-repeat;
+    background-position: -157px 0;
     overflow: hidden;
-<<<<<<< HEAD
     margin: 0 auto;
     position: absolute;
     margin-top: -20px;
     margin-left: 274px;
-=======
-    text-align: center;
-    margin: 0 auto;
-    position: absolute;
-    margin-left: 268px;
->>>>>>> 60bc6fb7651b996336654092564d6b7e7e9766c1
-}
-.string {
-    position: absolute;
-    top:0;
-    left:0;
-    background: url(../images/string.png) repeat-x;
-    display:block;
-    height:168px;
-    width:100%;
-}
-
-.home {
-
-}
-
-.home .foolbox {
-    margin-top: 50px;
-    margin-bottom: 30px;
-
 }
 
 .centered {
@@ -83,31 +56,74 @@ header {
     font-size:1.5em;
 }
 
-.foolbox {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-.foolbox .row {
-    margin-top: 10px;
+.main-content {
+    background-color: white;
+
 }
 
 footer {
     margin: 0 auto;
     margin-top:-2px;
     text-align: left;
-    color: #ccaf85;
+    color: #d8b386;
     background: #262015;
     min-height: 100px;
+}
+
+footer h3.title {
+    color: white;
+    text-transform: uppercase;
 }
 
 footer .content {
     padding: 10px;
 }
 
-footer a {
-    color: #FF207A;
+footer p.contact {
     font-weight: bold;
+}
+footer a,
+footer .phonenum {
+    color: #ff9c00;
+    font-weight: bold;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #ff9c00;
+    font-weight: bold;
+    text-decoration: overline;
+}
+footer .link-top {
+    width:100%;
+    border-top:1px dashed #382f1f;
+    display:block;
+    padding:0;
+    margin:0;
+}
+footer .links {
+    list-style: none;
+    margin:0 10px 20px 10px;
+    float: left;
+    display:block;
+    font-size: 0.85em;
+}
+footer .links li {
+    float: left;
+    margin-right: 10px;
+    padding-bottom: 40px;
+}
+footer .links a {
+    font-weight: normal;
+    color: #d8b386;
+    text-decoration: none;
+}
+footer .links a:hover {
+    color: #ff9c00;
+}
+footer .copy {
+    float: right;
+    margin-right: 10px;
+    font-size: 0.85em;
 }
 
 .modal {
@@ -123,28 +139,47 @@ footer a {
     float: left;
 }
 
-.dashed-sep-right {
-    border-right: 2px dashed #9d815b;
+.bottom-content {
+    position: relative;
+    clear: both;
+    padding-top: 70px;
 }
-.dashed-sep-left {
-    border-left: 2px dashed #9d815b;
-}
-
 .bottom-content .content {
-    padding: 0 10px 10px 20px;
-    text-align: center;
+    padding: 45px 10px 10px 20px;
+    text-align: left;
 }
 .bottom-content .col {
     background: url(../images/footer_hsep.png) no-repeat;
     background-position: top left;
+    min-height: 187px;
+    position: relative;
 }
 .bottom-content .content h3 {
     text-transform: uppercase;
 }
+
+.hiw-header {
+    position: absolute;
+    display:block;
+    float: left;
+    clear:both;
+    height:84px;
+    width:100%;
+    background: url(../images/hiw_r.png) top right no-repeat;
+    margin-top:-45px;
+}
+.hiw-header .hiw-left {
+    background: url(../images/hiw_l.png) top left no-repeat;
+    display:block;
+    float: left;
+    clear:both;
+    height:84px;
+    width:484px;
+}
+
 .content p {
     text-align: left;
 }
-<<<<<<< HEAD
 
 .featured {
     margin: 0 auto;
@@ -152,6 +187,7 @@ footer a {
     height: 292px;
     background: url(../images/feature_bg.png) no-repeat;
     margin-bottom: 90px;
+    margin-top: 74px;
 }
 .featured .box {
     position: relative;
@@ -256,5 +292,89 @@ footer a {
     text-align: center;
     padding-top: 16px;
 }
-=======
->>>>>>> 60bc6fb7651b996336654092564d6b7e7e9766c1
+
+blockquote.landing {
+    text-transform: uppercase;
+    width:525px;
+    max-width:100%;
+    text-align:center;
+    float:none;
+    margin:0 auto;
+    clear:both;
+    padding: 40px 0;
+    font-weight: bold;
+    color: black;
+    quotes: "\201C" "\201D";
+    font-size: 1.6em;
+    line-height: 1.1em;
+    overflow: visible;
+}
+blockquote:before { content: open-quote; font-weight: bold; }
+blockquote:after { content: close-quote; font-weight: bold; }
+blockquote.landing:before,
+blockquote.landing:after {
+    font-size: 2em;
+}
+blockquote.landing:before {
+    vertical-align: -10px;
+}
+blockquote.landing:after {
+    vertical-align: -14px;
+}
+.box-stamps {
+    position: absolute;
+    bottom:20px;
+    right: 20px;
+    display:block;
+    width:173px;
+    height:38px;
+    background-position: 0 -108px;
+}
+.guaranteed-stamp {
+    display:block;
+    width:108px;
+    height:74px;
+    background:url(../images/guaranteed_stamp.png) no-repeat;
+}
+.social-networks {
+    position: relative;
+    float: left;
+}
+ul.social-links {
+    list-style: none;
+    margin:0;
+    padding:0;
+    float: left;
+}
+ul.social-links a {
+    display:block;
+    padding:0;
+    margin:0;
+}
+ul.social-links li {
+    float: left;
+    margin-right: 10px;
+}
+.icon-facebook {
+    width:48px;
+    height:51px;
+    background-position: 0 0;
+}
+.icon-twitter {
+    width:48px;
+    height:51px;
+    background-position: -53px 0;
+}
+.icon-p {
+    width:48px;
+    height:51px;
+    background-position: -103px 0;
+}
+.certified {
+    background-position: 0 -51px;
+    width:144px;
+    height: 56px;
+    position: absolute;
+    bottom: -44px;
+    left:0;
+}

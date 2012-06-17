@@ -7,62 +7,35 @@
 
 $app->get('/boxes/', 'boxes_list');
 function boxes_list() {
-	global $app, $v;
-	echo 'list of boxes';	
+    global $app, $v;
+    echo 'list of boxes';
 }
 
 
 // --  page for boxes
 $app->get('/:box_name/', 'box_name_show');
 function box_name_show($box_name, $s = '') {
-	global $app, $v;
+    global $app, $v;
 
-	// verify that box name exist
-	$box = ORM::for_table('boxfools')
-		->where('name', $box_name)
-		->where_gt('status', 1)
-		->find_one();
+    // verify that box name exist
+    $box = ORM::for_table('boxfools')
+        ->where('name', $box_name)
+        ->where_gt('status', 1)
+        ->find_one();
 
-	if($box == false) {
-		$v['page'] = 'error';
-		$app->render('layout', $v);
-	} else {
-		$v['box_name'] = $box_name;
-		$v['box_description'] = $box->description;
-		$v['box_hashtag'] = $box->hashtag;
-		$v['box_price'] = $box->price;
-		$v['page'] = 'box_info';
-		$app->render('layout', $v);
-	}
+    if($box == false) {
+        $v['page'] = 'error';
+        $app->render('layout', $v);
+    } else {
+        $v['box_name'] = $box_name;
+        $v['box_description'] = $box->description;
+        $v['box_hashtag'] = $box->hashtag;
+        $v['box_price'] = $box->price;
+        $v['page'] = 'box_info';
+        $app->render('layout', $v);
+    }
 }
 
-// -- page for box subscribe
-/*
-$app->get('/:box_name/subscribe/', 'box_subscribe');
-function box_subscribe($box_name) {
-	global $app, $v;
-	echo "test";
-	echo $app->request()->post('name');
-	// verify that box name exist
-	$box = ORM::for_table('boxfools')
-		->where('name', $box_name)
-		->where_gt('status', 1)
-		->find_one();
-
-	if($box == false) {
-		$v['page'] = 'error';
-		$app->render('layout', $v);
-	} else {
-		$v['form_error'] = false;
-		$v['box_name'] = $box_name;
-		$v['page'] = 'box_subscribe';
-		$v['box_description'] = $box->description;
-		$v['box_hashtag'] = $box->hashtag;
-		$v['box_price'] = $box->price;
-		$app->render('layout', $v);
-	}
-}
- */
 
 $app->map('/:box_name/subscribe/', 'box_subscribe_process')->via('POST', 'GET');
 function box_subscribe_process($box_name) {
@@ -80,51 +53,18 @@ function box_subscribe_process($box_name) {
 		
 		if($_POST) {
 			echo 'wut wut';
-		}
 
-		$v['form_error'] = false;
-		$v['box_name'] = $box_name;
-		$v['page'] = 'box_subscribe';
-		$v['box_description'] = $box->description;
-		$v['box_hashtag'] = $box->hashtag;
-		$v['box_price'] = $box->price;
-		$app->render('layout', $v);
-	}
+			$input['name'] = $app->request()->post('name');
+			$input['email'] = $app->request()->post('email');
+			$input['address1'] = $app->request()->post('address1');
+			$input['address2'] = $app->request()->post('address2');
+			$input['address3'] = $app->request()->post('address3');
+			$input['postcode'] =$app->request()->post('postcode');
+			$input['city'] = $app->request()->post('city');
+			$input['state'] = $app->request()->post('state');
+			$input['country'] = $app->request()->post('country');
 
-}
-
-// -- process subscription form
-/*
-$app->post('/:box_name/subscribe/', 'box_subscribe_process');
-function box_subscribe_proccess() {
-	global $app, $v;
-	
-	echo "post";
-	// verify that box name exist
-	$box = ORM::for_table('boxfools')
-		->where('name', $box_name)
-		->where_gt('status', 1)
-		->find_one();
-
-	if($box == false) {
-		$v['page'] = 'error';
-		$app->render('layout', $v);
-	}	else {
-		
-		$input['name'] = $app->request()->post('name');
-		$input['email'] = $app->request()->post('email');
-		$input['address1'] = $app->request()->post('address1');
-		$input['address2'] = $app->request()->post('address2');
-		$input['address3'] = $app->request()->post('address3');
-		$input['postcode'] =$app->request()->post('postcode');
-		$input['city'] = $app->request()->post('city');
-		$input['state'] = $app->request()->post('state');
-		$input['country'] = $app->request()->post('country');
-
-		$v['form_error'] = false;
-
-		// verify all fields are filled
-		foreach($input as $k => $v) {
+			foreach($input as $k => $v) {
 			if($v == '') {
 				$v['form_error_type'][$k] = true;
 				$v['form_error_message'][$k] = 'Fields canot be empty';
@@ -140,14 +80,16 @@ function box_subscribe_proccess() {
 			}
 		}
 
+		}
+
+		$v['form_error'] = false;
 		$v['box_name'] = $box_name;
+		$v['page'] = 'box_subscribe';
 		$v['box_description'] = $box->description;
 		$v['box_hashtag'] = $box->hashtag;
 		$v['box_price'] = $box->price;
-
 		$app->render('layout', $v);
-
 	}
 
 }
- */
+
