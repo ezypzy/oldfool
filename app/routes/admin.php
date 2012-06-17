@@ -53,6 +53,18 @@ function admin_boxes() {
 }
 
 
+$app->get('/adm/boxes/create', 'admin_boxes_create');
+function admin_boxes_create() {
+	global $app, $db, $v;
+	// -- if logged in then redirect to dashboard
+
+	$v['window_title'] = 'Boxfool Admin: Create a new Box';
+	$v['adm_page'] = 'admin/boxes_create';
+
+	$app->render('admin/layout', $v);
+}
+
+
 $app->get('/adm/boxes/edit', 'admin_boxes_edit');
 function admin_boxes_edit() {
 	global $app, $db, $v;
