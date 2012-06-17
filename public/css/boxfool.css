@@ -139,7 +139,10 @@ footer .copy {
     margin-right: 10px;
     font-size: 0.85em;
 }
-
+img.center {
+    text-align: center;
+    margin: 0 auto;
+}
 .modal {
     text-shadow:none;
     color:black;
@@ -337,7 +340,7 @@ blockquote.landing:after {
 }
 .box-stamps {
     position: absolute;
-    bottom:20px;
+    bottom: -40px;
     right: 20px;
     display:block;
     width:173px;
@@ -385,12 +388,12 @@ ul.social-links li {
     background-position: -103px 0;
 }
 .certified {
-    background-position: 0 -51px;
-    width:144px;
-    height: 56px;
+    background: url(../images/certified_chop.png) no-repeat;
+    width:114px;
+    height: 53px;
     position: absolute;
-    bottom: -44px;
-    left:0;
+    bottom: -42px;
+    left:31px;
 }
 .certified2 {
     background-position: -181px -89px;
