@@ -10,6 +10,15 @@ body {
 header {
     position:relative;
 }
+header #login_link {
+    float: right;
+    position: absolute;
+    z-index:1;
+    right:0;
+    top: 50%;
+    color: black;
+    text-decoration: none;
+}
 .bigcap-condensed {
     color: #523e21;
     text-transform: uppercase;
@@ -377,4 +386,32 @@ ul.social-links li {
     position: absolute;
     bottom: -44px;
     left:0;
+}
+#login_box {
+    display:;
+    position: absolute;
+    right:0;
+    top:0;
+    margin-right: 15px;
+    z-index:7;
+    width:295px;
+    height:340px;
+    background: url(../images/login_bg.png) 0 -108px no-repeat;
+}
+#login_box form {
+    margin-top: 20px;
+}
+#login_box .login-close {
+    display:block;
+    width:42px;
+    height:42px;
+    padding:0;
+    margin:0;
+    cursor: pointer;
+    background: url(../images/login_close.png) no-repeat;
+    position: relative;
+    bottom:-5px;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
 }
