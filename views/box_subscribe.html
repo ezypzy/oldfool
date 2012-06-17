@@ -1,6 +1,15 @@
 <p>This is the subscrition page for "Boxfool of {$box_name}"</p>
 
-<form action="" method="post" accept-charset="utf-8">
+{if="$form_error"}
+<div class="errorBox">
+	<p>Error</p>
+	{loop="$form_error_type"}
+		{$key} - {$value}
+	{/loop}	
+</div>
+{/if}
+
+<form action="{$base_url}/{$box_name}/subscribe/" method="post" accept-charset="utf-8">
 	<p>
 		<label for="name">Name</label>
 		<input type="text" name="name" value="" id="name">
@@ -25,7 +34,7 @@
 		<label for="country">Country</label>
 		<input type="text" name="country" value="">
 	</p>
-	<p><input type="submit" value="Payment &rarr;"></p>
+	<p><input type="submit" name="submit" value="Payment &rarr;"></p>
 </form>
 
 <!-- box information container start -->
