@@ -23,7 +23,7 @@ function box_name_show($box_name, $s = '') {
     // verify that box name exist
     $box = ORM::for_table('boxfools')
         ->where('name', $box_name)
-        ->where_gt('status', 1)
+        ->where_gt('status_id', 1)
         ->find_one();
 
     if($box == false || !in_array($box_name, $valid_box_names)) {
@@ -49,7 +49,7 @@ function box_subscribe($box_name) {
     // verify that box name exist
     $box = ORM::for_table('boxfools')
         ->where('name', $box_name)
-        ->where_gt('status', 1)
+        ->where_gt('status_id', 1)
         ->find_one();
 
     if($box == false) {
@@ -73,7 +73,7 @@ function box_subscribe_proccess() {
     // verify that box name exist
     $box = ORM::for_table('boxfools')
         ->where('name', $box_name)
-        ->where_gt('status', 1)
+        ->where_gt('status_id', 1)
         ->find_one();
 
     if($box == false) {
