@@ -34,6 +34,7 @@ RainTPL::$cache_dir =   'cache';
 $v = array(
     'base_url'      =>  c::get('base_url'),
     'breadcrumb'    =>  'breadcrumb',
+    'is_home'       =>  false,
     'page'          =>  'blank',
     'window_title'  =>  'Boxfool of awesomeness'
 );
@@ -53,6 +54,7 @@ function landing()
 {
     global $v, $app,$base_template;
     $v['page']    =   'landing';
+    $v['is_home']   =   true;
     $app->render($base_template, $v);
 }
 
