@@ -45,6 +45,14 @@ function box_subscribe_process($box_name) {
 		->where('name', $box_name)
 		->where_gt('status', 1)
 		->find_one();
+	
+	$v['form_submit'] = false;
+	$v['form_error'] = false;
+	$v['box_name'] = $box_name;
+	$v['page'] = 'box_subscribe';
+	$v['box_description'] = $box->description;
+	$v['box_hashtag'] = $box->hashtag;
+	$v['box_price'] = $box->price;
 
 	if($box == false) {
 		$v['page'] = 'error';
@@ -52,43 +60,43 @@ function box_subscribe_process($box_name) {
 	} else {
 		
 		if($_POST) {
-			
-			//$input = $_POST;
-		
-			$input['name'] = $app->request()->post('name');
-			$input['email'] = $app->request()->post('email');
-			$input['address1'] = $app->request()->post('address1');
-			$input['address2'] = $app->request()->post('address2');
-			$input['address3'] = $app->request()->post('address3');
-			$input['postcode'] =$app->request()->post('postcode');
-			$input['city'] = $app->request()->post('city');
-			$input['state'] = $app->request()->post('state');
-			$input['country'] = $app->request()->post('country');
-			
-			foreach($input as $k => $v) {
-				if($v == '') {
-					$v['form_error_type'][$k] = true;
-					$v['form_error_message'][$k] = 'Fields canot be empty';
+			$v['form_submit'] = true;
+			$v['input_data'] = $input = $_POST;
+			$i = 0;
+
+			foreach($input as $key => $value) {
+				$v['form_error_'.$key] = '';
+				if($key != 'submit' &&
+					 $key != 'address2'	&&
+					 $key != 'address3' &&
+					 trim($value) == null) {
+					$v['form_error_list'][$i] = array(
+						'field' => $key, 
+						'message' => $key.' is empty.'
+					);
+					$v['form_error_'.$key] = 'error';
 					$v['form_error'] = true;
 				}
 
-				if($k == 'email') {
-					if(!v::email($v)) {
-						$v['form_error_type'][$k] = true;
-						$v['form_error_message'][$k] = 'Email syntax error. Please check yout email.';
+				if($key == 'email' && $v['form_error'] == false) {
+					if(!v::email($value)) {
+						$v['form_error_list'][$i] = array(
+							'field' => $key, 
+							'message' => $key.' Email syntax in incorrect.'
+						);
+						$v['form_error_'.$key] = 'error';
 						$v['form_error'] = true;
 					}
 				}
+				$i++;
 			}
 
+			// -- store data in db and resirect to paypal
+			if($v('form_error' == false)) {
+		
+			}
 		}
 
-		$v['form_error'] = false;
-		$v['box_name'] = $box_name;
-		$v['page'] = 'box_subscribe';
-		$v['box_description'] = $box->description;
-		$v['box_hashtag'] = $box->hashtag;
-		$v['box_price'] = $box->price;
 		$app->render($page_template, $v);
 	}
 
