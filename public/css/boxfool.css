@@ -20,6 +20,9 @@ header #login_link {
     color: black;
     text-decoration: none;
 }
+.caps {
+    text-transform: uppercase;
+}
 .bigcap-condensed {
     color: #523e21;
     text-transform: uppercase;

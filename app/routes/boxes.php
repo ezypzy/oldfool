@@ -15,24 +15,29 @@ function boxes_list() {
 // --  page for boxes
 $app->get('/:box_name/', 'box_name_show');
 function box_name_show($box_name, $s = '') {
-    global $app, $v;
-
+    global $app, $v, $base_template, $page_template;
+    
+    //maybe this should be in config?
+    $valid_box_names    =   array('his','hers');
+    
     // verify that box name exist
     $box = ORM::for_table('boxfools')
         ->where('name', $box_name)
         ->where_gt('status', 1)
         ->find_one();
 
-    if($box == false) {
+    if($box == false || !in_array($box_name, $valid_box_names)) {
         $v['page'] = 'error';
-        $app->render('layout', $v);
-    } else {
-        $v['box_name'] = $box_name;
-        $v['box_description'] = $box->description;
-        $v['box_hashtag'] = $box->hashtag;
-        $v['box_price'] = $box->price;
-        $v['page'] = 'box_info';
-        $app->render('layout', $v);
+        $app->render($base_template, $v);
+    } else{
+        $v  =   array_merge($v, array(
+            'box_description'   =>  $box->description,
+            'box_hashtag'       =>  $box->hashtag,
+            'box_name'          =>  $box_name,
+            'box_price'         =>  $box->price,
+            'page'              =>  'boxstar',
+        ));
+        $app->render($page_template, $v);
     }
 }
 

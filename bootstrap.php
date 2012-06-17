@@ -58,15 +58,6 @@ function landing()
     $app->render($base_template, $v);
 }
 
-$app->get('/boxfools-of-:page', 'boxstarpage');
-function boxstarpage($page)
-{
-    global $v, $app, $page_template;
-    $v['page']  =   'boxfoolof'.$page;
-
-    $app->render($page_template, $v);
-}
-
 require 'app/routes/admin.php';
 require 'app/routes/boxes.php';
 
