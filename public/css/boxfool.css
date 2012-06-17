@@ -78,6 +78,7 @@ footer {
     color: #d8b386;
     background: #262015;
     min-height: 100px;
+    padding-top: 30px;
 }
 
 footer h3.title {
@@ -155,7 +156,7 @@ footer .copy {
     padding-top: 70px;
 }
 .bottom-content .content {
-    padding: 45px 10px 10px 20px;
+    padding: 45px 10px 30px 20px;
     text-align: left;
 }
 .bottom-content .col {
