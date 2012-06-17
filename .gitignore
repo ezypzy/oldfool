@@ -41,3 +41,4 @@ Thumbs.db
 app/tmp/cache/*
 cache/raintpl/*
 .sass-cache
+.htaccess
