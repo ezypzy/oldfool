@@ -77,6 +77,18 @@ function admin_boxes_edit() {
 }
 
 
+$app->get('/adm/orders/', 'admin_order');
+function admin_order() {
+	global $app, $db, $v;
+	// -- if logged in then redirect to dashboard
+
+	$v['window_title'] = 'Boxfool Admin: Orders';
+	$v['adm_page'] = 'admin/orders';
+
+	$app->render('admin/layout', $v);
+}
+
+
 $app->get('/adm/subscribers/', 'admin_subscriber');
 function admin_subscriber() {
 	global $app, $db, $v;
