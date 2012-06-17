@@ -388,7 +388,7 @@ ul.social-links li {
     left:0;
 }
 #login_box {
-    display:;
+    display:none;
     position: absolute;
     right:0;
     top:0;
