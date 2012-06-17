@@ -39,8 +39,8 @@ function box_name_show($box_name, $s = '') {
 
 $app->map('/:box_name/subscribe/', 'box_subscribe_process')->via('POST', 'GET');
 function box_subscribe_process($box_name) {
-	global $app, $db, $v;
-	echo "postss";
+	global $app, $db, $v, $page_template;
+	
 	$box = ORM::for_table('boxfools')
 		->where('name', $box_name)
 		->where_gt('status', 1)
@@ -52,8 +52,9 @@ function box_subscribe_process($box_name) {
 	} else {
 		
 		if($_POST) {
-			echo 'wut wut';
-
+			
+			//$input = $_POST;
+		
 			$input['name'] = $app->request()->post('name');
 			$input['email'] = $app->request()->post('email');
 			$input['address1'] = $app->request()->post('address1');
@@ -63,22 +64,22 @@ function box_subscribe_process($box_name) {
 			$input['city'] = $app->request()->post('city');
 			$input['state'] = $app->request()->post('state');
 			$input['country'] = $app->request()->post('country');
-
+			
 			foreach($input as $k => $v) {
-			if($v == '') {
-				$v['form_error_type'][$k] = true;
-				$v['form_error_message'][$k] = 'Fields canot be empty';
-				$v['form_error'] = true;
-			}
-
-			if($k == 'email') {
-				if(!v::email($v)) {
+				if($v == '') {
 					$v['form_error_type'][$k] = true;
-					$v['form_error_message'][$k] = 'Email syntax error. Please check yout email.';
+					$v['form_error_message'][$k] = 'Fields canot be empty';
 					$v['form_error'] = true;
 				}
+
+				if($k == 'email') {
+					if(!v::email($v)) {
+						$v['form_error_type'][$k] = true;
+						$v['form_error_message'][$k] = 'Email syntax error. Please check yout email.';
+						$v['form_error'] = true;
+					}
+				}
 			}
-		}
 
 		}
 
@@ -88,7 +89,7 @@ function box_subscribe_process($box_name) {
 		$v['box_description'] = $box->description;
 		$v['box_hashtag'] = $box->hashtag;
 		$v['box_price'] = $box->price;
-		$app->render('layout', $v);
+		$app->render($page_template, $v);
 	}
 
 }
