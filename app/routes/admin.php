@@ -10,9 +10,8 @@ function admin() {
 	global $app, $db, $v;
 
 	// -- if logged in redirect to admin dashboard
-	$v['window_title'] = 'Boxfool - Admin Overlord Dashboard';
-	$v['adm_page'] = 'admin/login';
-	$app->render('admin/layout', $v);
+	$v['window_title'] = 'Boxfool - Admin Dashboard';
+	$app->render('admin/login', $v);
 
 	// -- else redirect to login
 	$app->redirect(c::get('base_url') .'/adm/login');
@@ -25,10 +24,9 @@ function admin_login() {
 	global $app, $db, $v;
 	// -- if logged in then redirect to dashboard
 
-	$v['window_title'] = 'Boxfool - Admin Overlord Login';
-	$v['adm_page'] = 'admin/login';
+	$v['window_title'] = 'Boxfool - Admin Login';
 
-	$app->render('admin/layout', $v);
+	$app->render('admin/login', $v);
 }
 
 
@@ -36,7 +34,7 @@ $app->get('/adm/dashboard/', 'admin_dashboard');
 function admin_dashboard() {
 	global $app, $db, $v;
 
-	$v['window_title'] = 'Boxfool - Admin Overlord Dashboard';
+	$v['window_title'] = 'Boxfool - Admin Dashboard';
 	$v['adm_page'] = 'admin/dashboard';
 
 	$app->render('admin/layout', $v);
@@ -48,14 +46,35 @@ function admin_boxes() {
 	global $app, $db, $v;
 	// -- if logged in then redirect to dashboard
 
-	$v['window_title'] = 'Boxfool - Admin Overlord Login';
+	$v['window_title'] = 'Boxfool Admin: Manage Boxes';
 	$v['adm_page'] = 'admin/boxes';
 
 	$app->render('admin/layout', $v);
 }
 
 
+$app->get('/adm/boxes/edit', 'admin_boxes_edit');
+function admin_boxes_edit() {
+	global $app, $db, $v;
+	// -- if logged in then redirect to dashboard
 
+	$v['window_title'] = 'Boxfool Admin: Manage Boxes';
+	$v['adm_page'] = 'admin/boxes_edit';
+
+	$app->render('admin/layout', $v);
+}
+
+
+$app->get('/adm/subscribers/', 'admin_subscriber');
+function admin_subscriber() {
+	global $app, $db, $v;
+	// -- if logged in then redirect to dashboard
+
+	$v['window_title'] = 'Boxfool Admin: Subscribers';
+	$v['adm_page'] = 'admin/subscribers';
+
+	$app->render('admin/layout', $v);
+}
 
 
 // -- add admin

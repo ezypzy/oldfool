@@ -1,0 +1,19 @@
+.box {
+	width:130px;
+	height:150px;
+	background:#eee;
+	float:left;
+	border-right:10px solid #fff;
+}
+
+.box_image {
+	width:130px;
+	height:130px;
+}
+
+.box_action {
+	width:100%;
+	height:20px;
+	background:#ccc;
+	text-align:center;
+}

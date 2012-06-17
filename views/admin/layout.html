@@ -1,30 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{$window_title}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="{$base_url}/public/css/bootstrap.css" rel="stylesheet" />
-	<link href="{$base_url}/public/css/bootstrap-responsive.css" rel="stylesheet" />
-	<link href="{$base_url}/public/css/boxfool.css" rel="stylesheet" />
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-</head>
+{include="admin/header"}
 
-<body>
-	<div class="container">
+<div class="row">
 
-		<div class="row">
-  		<div class="span12 centered">
-				<span class="logo"></span>
+		<div class="span2">&nbsp;</div>
+
+		<div class="span8" style="background:#fff; padding:20px; box-shadow:2px 2px 0px #000">
+
+			<div class="row">
+
+				<!-- sidebar -->
+				<div class="span2" style="float:left;">
+					{include="admin/sidebar"}
+				</div>
+	
+				<!-- content container start -->
+				<div class="span6" style="float:right;">
+					{include="$adm_page"}
+				</div><!-- content container ends -->
+
 			</div>
+
 		</div>
 
-		<div class="row">
-			<div class="span12"><p>&nbsp;</p></div>
-		</div>
+		<div class="span2">&nbsp;</div>
 
-		{include="$adm_page"}
+</div>
 
-	</div>
-</body>
-
-</html>
+{include="admin/footer"}
