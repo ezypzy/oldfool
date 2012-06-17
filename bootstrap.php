@@ -34,6 +34,7 @@ RainTPL::$cache_dir =   'cache';
 $v = array(
     'base_url'      =>  c::get('base_url'),
     'breadcrumb'    =>  'breadcrumb',
+    'is_home'       =>  false,
     'page'          =>  'blank',
     'window_title'  =>  'Boxfool of awesomeness'
 );
@@ -53,16 +54,8 @@ function landing()
 {
     global $v, $app,$base_template;
     $v['page']    =   'landing';
+    $v['is_home']   =   true;
     $app->render($base_template, $v);
-}
-
-$app->get('/boxfools-of-:page', 'boxstarpage');
-function boxstarpage($page)
-{
-    global $v, $app, $page_template;
-    $v['page']  =   'boxfoolof'.$page;
-
-    $app->render($page_template, $v);
 }
 
 require 'app/routes/admin.php';
