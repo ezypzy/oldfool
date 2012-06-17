@@ -16,10 +16,10 @@ function boxes_list() {
 $app->get('/:box_name/', 'box_name_show');
 function box_name_show($box_name, $s = '') {
     global $app, $v, $base_template, $page_template;
-    
+
     //maybe this should be in config?
     $valid_box_names    =   array('his','hers');
-    
+
     // verify that box name exist
     $box = ORM::for_table('boxfools')
         ->where('name', $box_name)

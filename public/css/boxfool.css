@@ -22,6 +22,22 @@ header #login_link {
     color: #523e21;
     text-decoration: none;
 }
+nav#breadcrumb {
+    width:100%;
+    text-transform: uppercase;
+}
+nav#breadcrumb .divider {
+    color: #08C;
+}
+nav#breadcrumb ul {
+    background: none;
+    border:none;
+    padding-left:0;
+    margin-left:0;
+}
+nav#breadcrumb li.active {
+    color: #FF145D;
+}
 .caps {
     text-transform: uppercase;
 }
@@ -95,7 +111,7 @@ footer .content {
     padding: 10px;
 }
 
-footer p.contact {
+footer address.contact {
     font-weight: bold;
 }
 footer a,
