@@ -1,6 +1,9 @@
 
 	<!-- form container start -->
 	<div class="row">
+
+		{if="$show_paypal_form == false"}
+
 		<div class="span8">
 			<h2>Step 1 of 2</h2>
 
@@ -14,7 +17,7 @@
 				</ol>
 			</div>
 			{/if}
-
+			
 			<form action="" method="post" class="form-horizontal" accept-charset="utf-8">
 
 				<fieldset>
@@ -32,9 +35,15 @@
 						</div>
 					</div>
 					<div class="control-group {if="$form_error"}{$form_error_password}{/if}">
-						<label class="control-label" for="password">password</label>
+						<label class="control-label" for="password">Password</label>
 						<div class="controls">
 							<input type="password" class="input-large" name="password">
+						</div>
+					</div>
+					<div class="control-group {if="$form_error"}{$form_error_tel}{/if}">
+						<label class="control-label" for="tel">Contact No.</label>
+						<div class="controls">
+							<input type="text" class="input-small" name="tel">
 						</div>
 					</div>
 				</fieldset>
@@ -90,12 +99,32 @@
 					</div>
 
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Make Payments</button>
+						<button type="submit" class="btn btn-primary">Next</button>
 					</div>
 				</fieldset>
 				
 			</form>
 		</div>
+
+		{else}
+
+		<div class="span8">
+			<h2>Step 2 of 2</h2>
+			
+			<h3>Boxfool of {$box_name} will be shipped to:</h3>
+
+			<p><strong>{$sub_name}</strong></p>
+			<p>{$sub_address}</p>
+			
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="{$box_paypal_button_id}">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+		</div>
+
+		{/if}
 
 		<div class="span4">
 			<h1>Subscribing to</h1>

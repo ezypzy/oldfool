@@ -20,7 +20,7 @@ function box_name_show($box_name, $s = '') {
     // verify that box name exist
     $box = ORM::for_table('boxfools')
         ->where('name', $box_name)
-        ->where_gt('status', 1)
+        ->where_gt('status_id', 1)
         ->find_one();
 
     if($box == false) {
@@ -43,7 +43,7 @@ function box_subscribe_process($box_name) {
 	
 	$box = ORM::for_table('boxfools')
 		->where('name', $box_name)
-		->where_gt('status', 1)
+		->where_gt('status_id', 1)
 		->find_one();
 	
 	$v['form_submit'] = false;
@@ -53,6 +53,8 @@ function box_subscribe_process($box_name) {
 	$v['box_description'] = $box->description;
 	$v['box_hashtag'] = $box->hashtag;
 	$v['box_price'] = $box->price;
+	$v['box_paypal_button_id'] = $box->paypal_hosted_button_id;
+	$v['show_paypal_form'] = false;
 
 	if($box == false) {
 		$v['page'] = 'error';
@@ -82,7 +84,7 @@ function box_subscribe_process($box_name) {
 					if(!v::email($value)) {
 						$v['form_error_list'][$i] = array(
 							'field' => $key, 
-							'message' => $key.' Email syntax in incorrect.'
+							'message' => 'Email syntax in incorrect.'
 						);
 						$v['form_error_'.$key] = 'error';
 						$v['form_error'] = true;
@@ -92,8 +94,40 @@ function box_subscribe_process($box_name) {
 			}
 
 			// -- store data in db and resirect to paypal
-			if($v('form_error' == false)) {
-		
+			if($v['form_error'] == false) {
+				$sub = ORM::for_table('subscribers')->create();
+				$sub->name = $_POST['name'];
+				$sub->email = trim(strtolower($_POST['email']));
+				$sub->tel = $_POST['tel'];
+				$sub->address_1 = $_POST['address1'];
+				$sub->address_2 = $_POST['address2'];
+				$sub->address_3 = $_POST['address3'];
+				$sub->postcode = $_POST['postcode'];
+				$sub->city = $_POST['city'];
+				$sub->state = $_POST['state'];
+				$sub->country = $_POST['country'];
+				$sub->password = sha1($_POST['password']);
+				$sub->created_on = date('Y-m-d H:i:s');
+				$sub->modified_on = date('Y-m-d H:i:s');
+				if($sub->save()) {
+					$v['sub_name'] = $sub->name;
+					$v['sub_address'] = 
+						$sub->address_1 .'<br/>'.
+						$sub->address_2 .'<br/>'.
+						$sub->address_3 .'<br/>'.
+						$sub->postcode .', '.
+						$sub->city .', '.
+						$sub->state .', '.
+						$sub->country .'. ';
+					$v['show_paypal_form'] = true;	
+				} else {
+					$v['form_error_list'][$i] = array(
+						'field' => 'database', 
+						'message' => 'Database error, please try again'
+					);
+					$v['form_error_database'] = 'error';
+					$v['form_error'] = true;
+				}
 			}
 		}
 
@@ -102,3 +136,9 @@ function box_subscribe_process($box_name) {
 
 }
 
+
+
+$app->get('/but-why/', 'order_cancel');
+function order_cancel() {
+	echo 'this is the but why page';
+}
