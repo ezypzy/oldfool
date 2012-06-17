@@ -37,11 +37,27 @@ $v = array(
     'window_title' => 'Boxfool of awesomeness'
 );
 
+function debug($args)
+{
+    echo '<pre>';
+    print_r($args);
+    echo '</pre>';
+}
+
+$base_template  =   'layout';
+
 $app->get('/', 'landing');
 function landing() {
-    global $v, $app;
-    //$v['page']  =   'test';
-    $app->render('landing', $v);
+    global $v, $app,$base_template;
+    $v['page']    =   'landing';
+    $app->render($base_template, $v);
+}
+
+$app->get('/boxfools-of-:page', 'boxstarpage');
+function boxstarpage($page) {
+    global $v, $app,$base_template;
+    $v['page']  =   'boxfoolof'.$page;
+    $app->render($base_template, $v);
 }
 
 require 'app/routes/admin.php';

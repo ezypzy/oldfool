@@ -113,6 +113,9 @@ footer .links a {
     color: #d8b386;
     text-decoration: none;
 }
+footer .links a:hover {
+    color: #ff9c00;
+}
 footer .copy {
     float: right;
     margin-right: 10px;
