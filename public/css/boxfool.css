@@ -387,6 +387,14 @@ ul.social-links li {
     bottom: -44px;
     left:0;
 }
+.certified2 {
+    background-position: -181px -89px;
+    width:158px;
+    height: 59px;
+    position: absolute;
+    bottom: -44px;
+    left:0;
+}
 #login_box {
     display:none;
     position: absolute;
