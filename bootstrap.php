@@ -66,6 +66,55 @@ function landing()
     $app->render($base_template, $v);
 }
 
+$app->map('/newsletter/', 'newsletter')->via('POST', 'GET');
+function newsletter()
+{
+	global $v, $app, $base_template;
+	$v['page'] = 'landing';
+	$v['is_home'] = true;
+	$v['form_error'] = false;
+	$v['form_success'] = false;
+	$v['form_error_type']['null'] = false;
+	$v['form_error_type']['syntax'] = false;
+	$v['form_error_type']['dublication'] = false;
+	$v['form_error_type']['database'] = false;
+
+	if($app->request()->isPost()) {
+		// check for valid email address
+		$email = $app->request()->post('email');
+
+		if($email == '') {
+			$v['form_error'] = true;
+			$v['form_error_type']['null'] = true;
+		}	
+
+		if(!v::email($email)) {
+			$v['form_error'] = true;
+			$v['form_error_type']['syntax'] = true; 
+		}
+
+		$e = ORM::for_table('emails')->where('email', $email)->find_one();
+		if($e) {
+			$v['form_error'] = true;
+			$v['form_error_type']['dublication'] = true; 
+		}
+
+		if($v['form_error'] == false) {
+			$e = ORM::for_table('emails')->create();
+			$e->email = $email;
+			$e->created_at = date('Y-m-d H:i:s');
+			if($e->save()) {
+				$v['form_success'] = true;
+			} else {
+				$v['form_error'] = true;
+				$v['form_error_database'] = true;
+			}
+		} 
+	}
+	
+	$app->render($base_template, $v);
+}
+
 require 'app/routes/admin.php';
 require 'app/routes/boxes.php';
 

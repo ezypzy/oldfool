@@ -1,28 +1,53 @@
 <div class="container">
-    <div class="row">
-        <div class="clearfix"></div>
-        <section class="featured">
-            <div class="box">
-							<div class="emptybox">
-								<form action="" method="post" class="form-horizontal newsletter-email">
-									<div class="control-group">
-										<label class="control-label" for="email">Email copy here</label>
-										<div class="controls">
-											<div class="input-append">
-												<input type="text" size="16">
-												<button class="btn" type="">Submit</button>
-											</div>
-										</div>
-									</div>	
-								</form>	
-							</div>	
-                <div class="featured-banner">
-                    Handpicked "Boxfool of Surprises" delivered to you every quarter for only RM90
-                </div>
-            </div>
-            <blockquote class="landing">
-                5% of the value of your box subscription will be channels to a charitable cause chosen by your Boxstar.
-            </blockquote>
-        </section>
-    </div>
+	<div class="row">
+		<blockquote class="landing">
+			Handpicked "Boxfool of Surprises" delivered to you every quarter for only RM90
+		</blockquote>
+		
+		<section class="featured">						
+			<div class="box">
+				<div class="emptybox">
+				</div>	
+        <div class="featured-banner">
+					5% of each Boxfool goes to charity
+				</div>
+			</div>
+		</section>
+	</div>
+
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="newsletter-form">
+
+			{if="$form_error"}
+			<div class="error">
+				<p><strong>Error</strong></p>
+				<p>Please check your email.</p>
+			</div>
+			{/if}
+
+			{if="$form_success"}
+			<div class="success">
+				<p>Thank you, we will keep in touch.</p>
+			</div>
+			{else}
+
+			<form action="/newsletter/" method="post" class="form-horizontal newsletter-email">
+				<div class="control-group">
+					<label class="control-label" for="email">Email copy here</label>
+					<div class="controls">
+						<div class="input-append">
+							<input type="text" name="email" size="16">
+							<button class="btn" type="">Submit</button>
+						</div>
+					</div>
+				</div>	
+			</form>
+
+			{/if}
+
+		</div>
+	</div>
 </div>

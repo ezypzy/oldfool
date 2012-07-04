@@ -221,8 +221,8 @@ img.center {
     width: 835px;
     height: 292px;
     background: url(../images/feature_bg.png) no-repeat;
-    margin-bottom: 90px;
-    margin-top: 74px;
+    margin-bottom: 10px;
+    margin-top: 0px;
 }
 .featured .box {
     position: relative;
@@ -295,7 +295,7 @@ img.center {
 .featured .boxstars li.last .learmore {
     right: 0;
 }
-
+/*
 .featured blockquote {
     max-width: 203px;
     max-height: 64px;
@@ -305,6 +305,17 @@ img.center {
     border: none !important;
     border-left: 0;
 }
+*/
+blockquote.landing {
+    max-width: 203px;
+    max-height: 64px;
+    overflow: auto;
+    margin:0;
+    margin-top: 25px;
+    border: none !important;
+    border-left: 0;
+}
+
 .featured .quote-left {
     float: left;
     margin-left: 10px;
@@ -485,10 +496,23 @@ ul.social-links li {
 	height: 233px;
 	position: relative;
 }
+.newsletter-form {
+	margin-top: 30px;
+}
 .newsletter-email {
+	/*
 	position: absolute;
 	top: 95px;
 	left: 52px;
+	*/
+}
+.newsletter-email .control-group {
+	width: 500px;
+	margin: auto;
+	text-align: center;
+}
+.newsletter-email .control-group label {
+	text-align: right;
 }
 .newsletter-email label {
 	color: #ffffff;
