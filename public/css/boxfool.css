@@ -479,3 +479,17 @@ ul.social-links li {
     margin:0;
     padding:0;
 }
+.emptybox {
+	background-image: url('../images/boxempty.png');
+	width: 598px;
+	height: 233px;
+	position: relative;
+}
+.newsletter-email {
+	position: absolute;
+	top: 95px;
+	left: 52px;
+}
+.newsletter-email label {
+	color: #ffffff;
+}
