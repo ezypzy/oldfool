@@ -24,7 +24,18 @@
 			{if="$form_error"}
 			<div class="error">
 				<p><strong>Error</strong></p>
-				<p>Please check your email.</p>
+				{if="$form_error_type['null']"}
+				<p>null email.</p>
+				{/if}
+				{if="$form_error_type['syntax']"}
+				<p>syntax error email.</p>
+				{/if}
+				{if="$form_error_type['duplication']"}
+				<p>email alredy in database.</p>
+				{/if}
+				{if="$form_error_type['database']"}
+				<p>database error</p>
+				{/if}
 			</div>
 			{/if}
 

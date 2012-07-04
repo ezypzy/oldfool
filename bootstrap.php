@@ -76,7 +76,7 @@ function newsletter()
 	$v['form_success'] = false;
 	$v['form_error_type']['null'] = false;
 	$v['form_error_type']['syntax'] = false;
-	$v['form_error_type']['dublication'] = false;
+	$v['form_error_type']['duplication'] = false;
 	$v['form_error_type']['database'] = false;
 
 	if($app->request()->isPost()) {
@@ -96,7 +96,7 @@ function newsletter()
 		$e = ORM::for_table('emails')->where('email', $email)->find_one();
 		if($e) {
 			$v['form_error'] = true;
-			$v['form_error_type']['dublication'] = true; 
+			$v['form_error_type']['duplication'] = true; 
 		}
 
 		if($v['form_error'] == false) {
@@ -107,7 +107,7 @@ function newsletter()
 				$v['form_success'] = true;
 			} else {
 				$v['form_error'] = true;
-				$v['form_error_database'] = true;
+				$v['form_error_type']['database'] = true;
 			}
 		} 
 	}
