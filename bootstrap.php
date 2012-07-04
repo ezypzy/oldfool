@@ -15,6 +15,9 @@ require_once 'app/helpers/db.php';
 require_once 'app/helpers/view.php';
 require_once 'app/helpers/session.php';
 
+//Custom libraries
+require_once 'app/lib/breadcrumb.php';
+
 // -- init database connection
 $db = new Database();
 $db->connect();
@@ -27,15 +30,20 @@ $app = new Slim(array(
     'templates.path'    =>  '../views'
 ));
 
+$bread  =   new Breadcrumb('/');
+$crumb  =   $bread->generate();
+
 // Change cache dir from "tmp" to "cache"
 RainTPL::$cache_dir =   'cache';
 
 // -- init the view data
 $v = array(
     'base_url'      =>  c::get('base_url'),
+    'crumb'         =>  $crumb,
     'breadcrumb'    =>  'breadcrumb',
     'is_home'       =>  false,
     'page'          =>  'blank',
+    'tweetfools'    =>  'tweetfools',
     'window_title'  =>  'Boxfool of awesomeness'
 );
 
