@@ -28,7 +28,7 @@ var TWEETFOOL = function(containerId,numTweets,user) {
             success: function(data, textStatus, xhr) {
                 console.log(data);
                  var html   =   '<article class="tweet">'
-                            +      '<p><i class="user">USER:</i> TWEET_TEXT</p>'
+                            +      '<p><i class="user">@USER:</i> TWEET_TEXT</p>'
                             +      '<time datetime="DATETIME" class="time">AGO</time>'
                             +   '</article>';
                  // append tweets into page

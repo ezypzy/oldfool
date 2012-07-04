@@ -44,7 +44,7 @@ $v = array(
     'is_home'       =>  false,
     'page'          =>  'blank',
     'tweetfools'    =>  'tweetfools',
-    'window_title'  =>  'Boxfool of awesomeness'
+    'window_title'  =>  'Discover Boxfools of Awesomeness Every Quarter'
 );
 
 function debug($args)
@@ -63,6 +63,8 @@ function landing()
     global $v, $app,$base_template;
     $v['page']    =   'landing';
     $v['is_home']   =   true;
+		$v['form_error'] = false; // Newly added to prevent error
+		$v['form_success'] = false; // Newly added to prevent error
     $app->render($base_template, $v);
 }
 
