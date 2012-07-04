@@ -1,4 +1,5 @@
 body {
+
     color: #523e21;
     background: url(../images/bg.jpg);
     padding: 0;
@@ -9,6 +10,36 @@ body {
 }
 header {
     position:relative;
+}
+header #login_link {
+    float: right;
+    position: absolute;
+    z-index:1;
+    right:0;
+    top: 50%;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #523e21;
+    text-decoration: none;
+}
+nav#breadcrumb {
+    width:100%;
+    text-transform: uppercase;
+}
+nav#breadcrumb .divider {
+    color: #08C;
+}
+nav#breadcrumb ul {
+    background: none;
+    border:none;
+    padding-left:0;
+    margin-left:0;
+}
+nav#breadcrumb li.active {
+    color: #FF145D;
+}
+.caps {
+    text-transform: uppercase;
 }
 .bigcap-condensed {
     color: #523e21;
@@ -30,7 +61,7 @@ header {
     text-indent: -99999px;
     position: relative;
     text-align: center;
-    margin: 0 auto;
+    margin: 26px auto;
     margin-bottom: 10px;
 }
 .beta {
@@ -41,7 +72,7 @@ header {
     overflow: hidden;
     margin: 0 auto;
     position: absolute;
-    margin-top: -20px;
+    margin-top: -26px;
     margin-left: 274px;
 }
 
@@ -58,7 +89,7 @@ header {
 
 .main-content {
     background-color: white;
-
+    text-align: justify;
 }
 
 footer {
@@ -68,6 +99,7 @@ footer {
     color: #d8b386;
     background: #262015;
     min-height: 100px;
+    padding-top: 30px;
 }
 
 footer h3.title {
@@ -79,7 +111,7 @@ footer .content {
     padding: 10px;
 }
 
-footer p.contact {
+footer address.contact {
     font-weight: bold;
 }
 footer a,
@@ -125,7 +157,10 @@ footer .copy {
     margin-right: 10px;
     font-size: 0.85em;
 }
-
+img.center {
+    text-align: center;
+    margin: 0 auto;
+}
 .modal {
     text-shadow:none;
     color:black;
@@ -145,8 +180,8 @@ footer .copy {
     padding-top: 70px;
 }
 .bottom-content .content {
-    padding: 45px 10px 10px 20px;
-    text-align: left;
+    padding: 45px 10px 30px 20px;
+    text-align: justify;;
 }
 .bottom-content .col {
     background: url(../images/footer_hsep.png) no-repeat;
@@ -178,7 +213,7 @@ footer .copy {
 }
 
 .content p {
-    text-align: left;
+    text-align: justify;
 }
 
 .featured {
@@ -186,8 +221,8 @@ footer .copy {
     width: 835px;
     height: 292px;
     background: url(../images/feature_bg.png) no-repeat;
-    margin-bottom: 90px;
-    margin-top: 74px;
+    margin-bottom: 10px;
+    margin-top: 0px;
 }
 .featured .box {
     position: relative;
@@ -260,7 +295,7 @@ footer .copy {
 .featured .boxstars li.last .learmore {
     right: 0;
 }
-
+/*
 .featured blockquote {
     max-width: 203px;
     max-height: 64px;
@@ -270,6 +305,17 @@ footer .copy {
     border: none !important;
     border-left: 0;
 }
+*/
+blockquote.landing {
+    max-width: 203px;
+    max-height: 64px;
+    overflow: auto;
+    margin:0;
+    margin-top: 25px;
+    border: none !important;
+    border-left: 0;
+}
+
 .featured .quote-left {
     float: left;
     margin-left: 10px;
@@ -323,7 +369,7 @@ blockquote.landing:after {
 }
 .box-stamps {
     position: absolute;
-    bottom:20px;
+    bottom: -40px;
     right: 20px;
     display:block;
     width:173px;
@@ -371,10 +417,103 @@ ul.social-links li {
     background-position: -103px 0;
 }
 .certified {
-    background-position: 0 -51px;
-    width:144px;
-    height: 56px;
+    background: url(../images/certified_chop.png) no-repeat;
+    width:114px;
+    height: 53px;
+    position: absolute;
+    bottom: -42px;
+    left:31px;
+}
+.certified2 {
+    background-position: -181px -89px;
+    width:158px;
+    height: 59px;
     position: absolute;
     bottom: -44px;
     left:0;
+}
+#login_box {
+    display:none;
+    position: absolute;
+    right:0;
+    top:0;
+    margin-right: -30px;
+    z-index:7;
+    width:295px;
+    height:340px;
+    background: url(../images/login_bg.png) 0 -108px no-repeat;
+}
+#login_box form {
+    margin-top: 20px;
+}
+#login_box .login-close {
+    display:block;
+    width:42px;
+    height:42px;
+    padding:0;
+    margin:0;
+    cursor: pointer;
+    background: url(../images/login_close.png) no-repeat;
+    position: relative;
+    bottom:-5px;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+}
+#tweets {
+    color: white;
+}
+#tweets i.user {
+    font-style: normal;
+    color: #00A3CB;
+    font-weight: bold;
+}
+#tweets time {
+    color: #B73B21;
+    font-style: oblique;
+}
+#tweets article {
+    border-bottom: 1px dashed #382f1f;
+    margin-bottom: 6px;
+    padding-top:5px;
+    padding-bottom: 10px;
+}
+#tweets article:first-child,
+#tweets article.first {
+
+}
+#tweets article:last-child,
+#tweets article.last {
+    border: none;
+}
+#tweets article p {
+    margin:0;
+    padding:0;
+}
+.emptybox {
+	background-image: url('../images/boxempty.png');
+	width: 598px;
+	height: 233px;
+	position: relative;
+}
+.newsletter-form {
+	margin-top: 30px;
+}
+.newsletter-email {
+	/*
+	position: absolute;
+	top: 95px;
+	left: 52px;
+	*/
+}
+.newsletter-email .control-group {
+	width: 500px;
+	margin: auto;
+	text-align: center;
+}
+.newsletter-email .control-group label {
+	text-align: right;
+}
+.newsletter-email label {
+	color: #ffffff;
 }

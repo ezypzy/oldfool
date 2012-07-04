@@ -1,42 +1,143 @@
-<p>This is the subscrition page for "Boxfool of {$box_name}"</p>
 
-<form action="" method="post" accept-charset="utf-8">
-	<p>
-		<label for="name">Name</label>
-		<input type="text" name="name" value="" id="name">
-	</p>
-	<p>
-		<label for="email">Email</label>
-		<input type="text" name="email" value="" id="email">		
-	</p>
-	<p>
-		<label for="shipto">Ship to</label>
-		<input type="text" name="address1" value="">
-		<input type="text" name="address2" value="">
-		<input type="text" name="address3" value="">
-		<label for="postcode">Postcode</label>
-		<input type="text" name="postcode" value="">
-		<label for="city">City</label>
-		<input type="text" name="city" value="">
-		<!-- maybe do a drop down? fix it to Klang Vally? -->
-		<label for="state">State</label>
-		<input type="text" name="some_name" value="">
-		<!-- maybe just fix this to Malaysia>? -->
-		<label for="country">Country</label>
-		<input type="text" name="country" value="">
-	</p>
-	<p><input type="submit" value="Payment &rarr;"></p>
-</form>
+	<!-- form container start -->
+	<div class="row">
 
-<!-- box information container start -->
-<div class="boxInformationContainer">
-	<p>Subscribing to <span>Boxfool of {$box_name}</span></p>
+		{if="$show_paypal_form == false"}
 
-	<img src="" atl="photo of boxstar">
+		<div class="span8">
+			<h2>Step 1 of 2</h2>
 
-	<p>{$box_description}</p>
+			{if="$form_error"}
+			<div class="alert alert-error">
+				<p><strong>Error...</strong></p>
+				<ol>
+					{loop="form_error_list"}
+					<li>{$value.message}</li>	
+					{/loop}
+				</ol>
+			</div>
+			{/if}
+			
+			<form action="" method="post" class="form-horizontal" accept-charset="utf-8">
 
-	<p>RM {$box_price}</p>
-</div><!-- box information container ends -->
+				<fieldset>
+					<legend>Personal Details</legend>
+					<div class="control-group {if="$form_error"}{$form_error_name}{/if}">
+						<label class="control-label" for="name">Name</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" name="name" value="{if="$form_submit"}{$input_data["name"]}{/if}">
+						</div>
+					</div>
+					<div class="control-group {if="$form_error"}{$form_error_email}{/if}">
+						<label class="control-label" for="email">Email</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" name="email" value="{if="$form_submit"}{$input_data["email"]}{/if}">
+						</div>
+					</div>
+					<div class="control-group {if="$form_error"}{$form_error_password}{/if}">
+						<label class="control-label" for="password">Password</label>
+						<div class="controls">
+							<input type="password" class="input-large" name="password">
+						</div>
+					</div>
+					<div class="control-group {if="$form_error"}{$form_error_tel}{/if}">
+						<label class="control-label" for="tel">Contact No.</label>
+						<div class="controls">
+							<input type="text" class="input-small" name="tel">
+						</div>
+					</div>
+				</fieldset>
 
+				<fieldset>
+					<legend>Ship to:</legend>
+				  <div class="control-group {if="$form_error"}{$form_error_address1}{/if}">
+						<label class="control-label" for="address1">Address</label>
+				    <div class="controls">
+				      <input type="text" class="input-xlarge" name="address1" value="{if="$form_submit"}{$input_data["address1"]}{/if}">
+				    </div>
+				  </div>
+				  <div class="control-group">
+						<label class="control-label" for="address2">&nbsp;</label>
+				    <div class="controls">
+				      <input type="text" class="input-xlarge" name="address2" value="{if="$form_submit"}{$input_data["address2"]}{/if}">
+				    </div>
+				  </div>
+				  <div class="control-group">
+						<label class="control-label" for="address3">&nbsp;</label>
+				    <div class="controls">
+				      <input type="text" class="input-xlarge" name="address3" value="{if="$form_submit"}{$input_data["address3"]}{/if}">
+				    </div>
+				  </div>
+				  <div class="control-group {if="$form_error"}{$form_error_postcode}{/if}">
+						<label class="control-label" for="postcode">Postcode</label>
+				    <div class="controls">
+				      <input type="text" class="input-small" name="postcode" value="{if="$form_submit"}{$input_data["postcode"]}{/if}">
+				    </div>
+				  </div>
+				  <div class="control-group {if="$form_error"}{$form_error_city}{/if}">
+						<label class="control-label" for="city">City</label>
+				    <div class="controls">
+				      <input type="text" class="input-medium" name="city" value="{if="$form_submit"}{$input_data["city"]}{/if}">
+				    </div>
+				  </div>
+				  <div class="control-group {if="$form_error"}{$form_error_state}{/if}">
+				    <label class="control-label" for="state">State</label>
+				    <div class="controls">
+							<select name="state">
+								<option value="KL" selected>Kuala Lumpur</option>
+								<option value="Selangor">Selangor<option>
+							</select>
+							<p class="help-block">Sorry we currently only ships within Klang Valley.</p>
+						</div>
+				  </div>
+				  <div class="control-group">
+				    <label class="control-label" for="country">Country</label>
+				    <div class="controls">
+							<input type="text" name="country" class="input-small uneditable-input" value="Malaysia" />
+							<p class="help-block">Sorry we currently only ships within Malaysia.</p>
+				    </div>
+					</div>
+
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">Next</button>
+					</div>
+				</fieldset>
+				
+			</form>
+		</div>
+
+		{else}
+
+		<div class="span8">
+			<h2>Step 2 of 2</h2>
+			
+			<h3>Boxfool of {$box_name} will be shipped to:</h3>
+
+			<p><strong>{$sub_name}</strong></p>
+			<p>{$sub_address}</p>
+			
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="{$box_paypal_button_id}">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+		</div>
+
+		{/if}
+
+		<div class="span4">
+			<h1>Subscribing to</h1>
+
+			<div class="thumbnail">
+        <img src="http://placehold.it/360x268" alt="">
+        <div class="caption">
+					<h5>Boxfools of {$box_name}</h5>
+					<p>{$box_description}</p>
+					<p><strong>RM {$box_price}</strong></p>
+				</div>
+      </div>
+		</div>
+	</div>
+	<!-- form container ends -->
 
