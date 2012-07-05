@@ -60,8 +60,11 @@ function page_contact()
 		$email_message .= "location: {$location}\r\n";
 		$email_message .= "Message:\r\n";
 		$email_message .= $comment ."\r\n\r\n";
-		mail($email_to, $email_subject, $email_message);
-		$v['form_success'] = true;
+		if(mail($email_to, $email_subject, $email_message)) {
+			$v['form_success'] = true;
+		} else {
+			die("canot send mail.");
+		}
 	}
 
 	$app->render($page_template, $v);
