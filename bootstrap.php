@@ -118,6 +118,7 @@ function newsletter()
 }
 
 require 'app/routes/admin.php';
+require 'app/routes/pages.php';
 require 'app/routes/boxes.php';
 
 $app->run();
