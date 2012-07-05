@@ -553,3 +553,18 @@ ul.social-links li {
 	width:450px;
 	float:right;
 }
+.msgcontainer {
+	position: relative;
+	height: 160px;
+	text-align: center;
+}
+#message2, #message3 {
+	display: none;
+}
+
+#message1, #message2, #message3 {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin-left: -252px;
+}
