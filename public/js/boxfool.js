@@ -23,7 +23,7 @@ $(function() {
 			
 		setInterval(function() {
 			toggle_msg();	
-		}, 3000);
+		}, 4000);
 
 });
 
