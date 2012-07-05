@@ -42,3 +42,8 @@ app/tmp/cache/*
 cache/raintpl/*
 .sass-cache
 .htaccess
+
+# Misc #
+###################
+png
+resources

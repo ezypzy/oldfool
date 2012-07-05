@@ -24,23 +24,23 @@
 			<div class="error">
 				<p><strong>Error</strong></p>
 				{if="$form_error_type['null']"}
-				<p>null email.</p>
+				<p>There's a problem with your email. Please re-enter.</p>
 				{/if}
 				{if="$form_error_type['syntax']"}
-				<p>syntax error email.</p>
+				<p>The e-mail format doesn't seem quite right. Please re-enter.</p>
 				{/if}
 				{if="$form_error_type['duplication']"}
-				<p>email alredy in database.</p>
+				<p>The e-mail you've entered is already in the database.</p>
 				{/if}
 				{if="$form_error_type['database']"}
-				<p>database error</p>
+				<p>Oops, a database error has occurred! Please try again.</p>
 				{/if}
 			</div>
 			{/if}
 
 			{if="$form_success"}
 			<div class="success">
-				<p>Thank you, we will keep in touch.</p>
+				<p>Got it, thanks! We'll keep you informed when we launch!</p>
 			</div>
 			{else}
 
