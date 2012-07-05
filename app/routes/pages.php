@@ -33,3 +33,17 @@ function page_faq()
 	$app->render($page_template, $v);
 }
 
+
+// -- routes to contact page
+$app->get('/contact/', 'page_contact');
+function page_contact()
+{
+	global $app, $v, $page_template;
+
+	$v = array_merge($v, array(
+		'page' => 'page_contact'
+	));
+
+	$app->render($page_template, $v);
+}
+
