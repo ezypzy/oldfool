@@ -87,7 +87,7 @@ nav#breadcrumb li.active {
 }
 
 .main-content {
-    background-color: white;
+		background:#fff;
     text-align: justify;
 }
 
@@ -543,4 +543,13 @@ ul.social-links li {
 }
 .emailform .success {
 	text-align: center;
+}
+
+.contact_left {
+	width:500px;
+	float:left;
+}
+.contact_right {
+	width:450px;
+	float:right;
 }

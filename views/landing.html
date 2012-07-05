@@ -22,16 +22,20 @@
 									<button class="btn" type="">Submit</button>
 									<p class="help-block">
 									{if="$form_error"}
+										{if="$form_error_type['null']"}
+										<p>There's a problem with your email. Please re-enter.</p>
+										{/if}
+		
 										{if="$form_error_type['syntax']"}
-										<strong>syntax error email.</strong>
+											<p>The e-mail format doesn't seem quite right. Please re-enter.</p>
 										{/if}
-								
+										
 										{if="$form_error_type['duplication']"}
-										<strong>email alredy in database.</strong>
+										<p>The e-mail you've entered is already in the database.</p>
 										{/if}
-								
+										
 										{if="$form_error_type['database']"}
-										<strong>database error</strong>
+										<p>Oops, a database error has occurred! Please try again.</p>
 										{/if}
 									{/if}
 									</p>
