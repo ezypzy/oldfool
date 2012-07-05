@@ -234,8 +234,8 @@ img.right {
 .featured .box {
     position: relative;
     margin:0 auto;
-    width: 597px;
-    height: 285px;
+    width: 600px;
+    height: 300px;
 }
 .featured .box-top {
     background: url(../images/box_top.gif) no-repeat;
@@ -254,6 +254,12 @@ img.right {
     z-index:5;
     width: 597px;
     height: 140px;
+}
+.featured .emptybox {
+	background-image: url('../images/boxempty.png');
+	width: 600px;
+	height: 280px;
+	position: relative;
 }
 .featured ul.boxstars {
     list-style: none;
@@ -496,12 +502,6 @@ ul.social-links li {
 #tweets article p {
     margin:0;
     padding:0;
-}
-.emptybox {
-	background-image: url('../images/boxempty.png');
-	width: 598px;
-	height: 233px;
-	position: relative;
 }
 .newsletter-form {
 	margin-top: 30px;
