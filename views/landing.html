@@ -6,7 +6,8 @@
 		<section class="featured">						
 			<div class="box">
 				<div style="width:600px; height:160px; text-align:center; z-index:100; position:absolute; margin:auto; top:-16px"><img src="/images/boxstar_comingsoon.png" /></div>
-				<div class="emptybox"></div>	
+				<div class="emptybox"></div>
+				<a name="email"></a>
         <div class="featured-banner">
 					5% off each Boxfool subscription goes to a charitable cause.
 				</div>
@@ -18,39 +19,39 @@
 
 <div class="container">
 	<div class="row">
-		<div class="newsletter-form">
-
-			{if="$form_error"}
-			<div class="error">
-				<p><strong>Error</strong></p>
-				{if="$form_error_type['null']"}
-				<p>null email.</p>
-				{/if}
-				{if="$form_error_type['syntax']"}
-				<p>syntax error email.</p>
-				{/if}
-				{if="$form_error_type['duplication']"}
-				<p>email alredy in database.</p>
-				{/if}
-				{if="$form_error_type['database']"}
-				<p>database error</p>
-				{/if}
-			</div>
-			{/if}
+		<div class="newsletter-form">	
 
 			{if="$form_success"}
 			<div class="success">
 				<p>Thank you, we will keep in touch.</p>
 			</div>
 			{else}
-
-			<form action="/newsletter/" method="post" class="form-horizontal newsletter-email">
+			<form action="/newsletter/#email" method="post" class="form-horizontal newsletter-email">
 				<div class="control-group">
-					<label class="control-label" for="email">YES I WANT AN INVITE!</label>
+					<label class="control-label" for="email"><strong>YES I WANT AN INVITE!</strong></label>
 					<div class="controls">
 						<div class="input-append">
 							<input type="text" name="email" maxlength="100" placeholder="Drop us your e-mail here" />
 							<button class="btn" type="">Submit</button>
+							<p class="help-block">
+							{if="$form_error"}
+								{if="$form_error_type['null']"}
+								<strong>null email.</strong>
+								{/if}
+
+								{if="$form_error_type['syntax']"}
+								<strong>syntax error email.</strong>
+								{/if}
+								
+								{if="$form_error_type['duplication']"}
+								<strong>email alredy in database.</strong>
+								{/if}
+								
+								{if="$form_error_type['database']"}
+								<strong>database error</strong>
+								{/if}
+							{/if}
+							</p>
 						</div>
 					</div>
 				</div>	

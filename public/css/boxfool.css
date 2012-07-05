@@ -518,11 +518,14 @@ ul.social-links li {
 	margin: auto;
 	text-align: center;
 }
+.newsletter-email .control-group .help-block {
+	text-align: left;
+}
 .newsletter-email .control-group label {
 	text-align: right;
 }
 .newsletter-email label {
-	color: #ffffff;
+	/*color: #ffffff;*/
 }
 
 .faqs {
