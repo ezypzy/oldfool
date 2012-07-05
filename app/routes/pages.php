@@ -51,8 +51,8 @@ function page_contact()
 		$location = $app->request()->post('contact_location');
 		$comment = $app->request()->post('contact_comment'); 
 
-		$email_to = "hello@boxfool.com";
-		//$email_to = "jibone@gmail.com";
+		//$email_to = "hello@boxfool.com";
+		$email_to = "jibone@gmail.com";
 		$email_subject = "Contact form";
 		$email_message = "Email from contact form, \r\n\r\n";
 		$email_message .= "Name: {$name}\r\n";
