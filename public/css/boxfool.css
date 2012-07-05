@@ -535,3 +535,12 @@ ul.social-links li {
 .faqs section {
 	margin-bottom: 30px;
 }
+
+.emailform {
+	position: absolute;
+	top: 170px;
+	left: 30px;
+}
+.emailform .success {
+	text-align: center;
+}
