@@ -57,13 +57,14 @@ function page_contact()
 		$email_message = "Email from contact form, \r\n\r\n";
 		$email_message .= "Name: {$name}\r\n";
 		$email_message .= "Email: {$email}\r\n\r\n";
-		$email_message .= "location: {$location}\r\n";
+		$email_message .= "Location: {$location}\r\n";
 		$email_message .= "Message:\r\n";
 		$email_message .= $comment ."\r\n\r\n";
-		if(mail($email_to, $email_subject, $email_message)) {
-			$v['form_success'] = true;
+		$email_header = "From: {$email}\r\n";
+		if (!mail($email_to, $email_subject, $email_message, $email_header)) {
+			die("Cannot send mail.");
 		} else {
-			die("canot send mail.");
+			$v['form_success'] = true;
 		}
 	}
 
