@@ -35,7 +35,7 @@ function page_faq()
 
 
 // -- routes to contact page
-$app->map('/contact/', 'page_contact')->via('GET', 'POST');
+$app->map('/contact/', 'page_contact')->via('POST', 'GET');
 function page_contact()
 {
 	global $app, $v, $page_template;
@@ -51,8 +51,8 @@ function page_contact()
 		$location = $app->request()->post('contact_location');
 		$comment = $app->request()->post('contact_comment'); 
 
-		//$email_to = "whatsup@boxfool.com";
-		$email_to = "jibone@gmail.com";
+		$email_to = "hello@boxfool.com";
+		//$email_to = "jibone@gmail.com";
 		$email_subject = "Contact form";
 		$email_message = "Email from contact form, \r\n\r\n";
 		$email_message .= "Name: {$name}\r\n";
