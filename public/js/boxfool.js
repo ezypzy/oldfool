@@ -1,3 +1,6 @@
+var total_msg = 3;
+var current_msg = 1;
+
 $(function() {
     $('#login_link').click(function(e) {
         $(this).hide();
@@ -17,4 +20,21 @@ $(function() {
             });
         }
     });
+			
+		setInterval(function() {
+			toggle_msg();	
+		}, 4000);
+
 });
+
+function toggle_msg() {
+	if(current_msg < total_msg) {
+		$('#message' + current_msg).fadeOut('slow');
+		current_msg = current_msg + 1; 
+		$('#message' + current_msg).fadeIn('slow');	
+	} else {
+		$('#message' + current_msg).fadeOut('slow');
+		current_msg = 1;
+		$('#message' + current_msg).fadeIn('slow');	
+	}
+}
