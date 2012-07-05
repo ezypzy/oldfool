@@ -32,3 +32,4 @@ function page_faq()
 
 	$app->render($page_template, $v);
 }
+
