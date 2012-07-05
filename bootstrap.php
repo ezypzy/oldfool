@@ -84,12 +84,7 @@ function newsletter()
 	if($app->request()->isPost()) {
 		// check for valid email address
 		$email = $app->request()->post('email');
-
-		if($email == '') {
-			$v['form_error'] = true;
-			$v['form_error_type']['null'] = true;
-		}	
-
+		
 		if(!v::email($email)) {
 			$v['form_error'] = true;
 			$v['form_error_type']['syntax'] = true; 
