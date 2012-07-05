@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<blockquote class="landing">
-			<span style="color:#d54343">A Boxfool of Surprises</span>, delivered to you every quarter for only RM88.
+			<span style="color:#d54343">A Boxfool of Surprises</span>, delivered to you every quarter for only <strike>RM90</strike> RM60!
 		</blockquote>
 		<section class="featured">						
 			<div class="box">
@@ -18,24 +18,24 @@
 							<label class="control-label" for="email"><strong>YES I WANT AN INVITE!</strong></label>
 							<div class="controls">
 								<div class="input-append">
-									<input type="text" name="email" maxlength="100" placeholder="Drop us your e-mail here" />
+									<input type="text" name="email" placeholder="Drop us your e-mail here" />
 									<button class="btn" type="">Submit</button>
 									<p class="help-block">
 									{if="$form_error"}
 										{if="$form_error_type['null']"}
-										<p>There's a problem with your email. Please re-enter.</p>
+										There's a problem with your email.
 										{/if}
 		
 										{if="$form_error_type['syntax']"}
-											<p>The e-mail format doesn't seem quite right. Please re-enter.</p>
+										The e-mail format doesn't seem quite right.
 										{/if}
 										
 										{if="$form_error_type['duplication']"}
-										<p>The e-mail you've entered is already in the database.</p>
+										The e-mail is already in the database.
 										{/if}
 										
 										{if="$form_error_type['database']"}
-										<p>Oops, a database error has occurred! Please try again.</p>
+										Oops, a database error has occurred! Please try again.
 										{/if}
 									{/if}
 									</p>
