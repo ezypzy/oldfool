@@ -26,7 +26,7 @@ function box_name_show($box_name, $s = '') {
         ->where_gt('status_id', 1)
         ->find_one();
 
-    if($box == false || !in_array($box_name, $valid_box_names)) {
+    if($box == false) {
         $v['page'] = 'error';
         $app->render($page_template, $v);
     } else{
