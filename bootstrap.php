@@ -169,6 +169,8 @@ function email_test() {
 }
 
 function sendEmail($realname, $email) {
+	ini_set('sendmail_from', 'hello@boxfool.com'); 
+
 	$email_to = $email;
 	$email_bcc = "hello@boxfool.com";
 	$email_from = "hello@boxfool.com";
