@@ -126,7 +126,7 @@ function cancel_order() {
 		$v['sub_name'] = $sub->name;
 		$v['sub_email'] = $sub->email;
 
-		$user_sess->desroy();
+		$user_sess->destroy();
 		
 	} else {
 		$app->redirect('/');
@@ -150,8 +150,8 @@ function thank_you() {
 		$v['sub_name'] = $sub->name;
 		$v['sub_email'] = $sub->email;
 
-		//sendEmail($v['sub_name'], $v['sub_email']);
-		$user_sess->desroy();
+		sendEmail($v['sub_name'], $v['sub_email']);
+		$user_sess->destroy();
 		
 	} else {
 		$app->redirect('/');
@@ -160,7 +160,7 @@ function thank_you() {
 	$v['page'] = 'thankyou';
 	$app->render($page_template, $v);
 }
-/*
+
 function sendEmail($realname, $email) {
 	$email_to = $email;
 	$email_bcc = "hello@boxfool.com";
@@ -188,7 +188,7 @@ function sendEmail($realname, $email) {
 	}
 	return $return;
 }
- */
+
 
 require 'app/routes/admin.php';
 require 'app/routes/pages.php';

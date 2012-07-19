@@ -82,14 +82,13 @@
 								<option value="KL" selected>Kuala Lumpur</option>
 								<option value="Selangor">Selangor<option>
 							</select>
-							<p class="help-block">Sorry we currently only ships within Klang Valley.</p>
+							<p class="help-block">Sorry we currently only ship within Klang Valley.</p>
 						</div>
 				  </div>
 				  <div class="control-group">
 				    <label class="control-label" for="country">Country</label>
 				    <div class="controls">
 							<input type="text" name="country" class="input-small uneditable-input" value="Malaysia" />
-							<p class="help-block">Sorry we currently only ships within Malaysia.</p>
 				    </div>
 					</div>
 
@@ -116,6 +115,7 @@
 
 			<h3>Click to make payment</h3>
 			<p>&nbsp;</p>
+			<!--
 			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 				<input type="hidden" name="cmd" value="_s-xclick">
 				<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
@@ -123,15 +123,15 @@
 				<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
+			-->
 			
-			<!--
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 				<input type="hidden" name="cmd" value="_s-xclick">
 				<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
 				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
-			-->
+		
 		</div>
 
 		{/if}
@@ -140,11 +140,12 @@
 			<h1>Subscribing <small>Boxfool of {$box_theme['name']}</small></h1>
 
 			<div class="thumbnail">
-        <img src="http://placehold.it/360x268" alt="">
+				<img src="{$base_url}/public/images/subscribe_eco.jpg" alt="">
         <div class="caption">
 					<h5>Boxfool of {$box_theme['name']}</h5>
-					<p>{$box_theme['description']}</p>
-					<h2>RM {$box_theme['price']}</h2>
+					<p>A box of eco-friendly, nature loving and wholesome organic stuff. Curated by Ninie Ahmad.</p>
+					<p>Ships 15th September 2012</p>
+					<h2>RM {$box_theme['price']} / box</h2>
 				</div>
       </div>
 		</div>
