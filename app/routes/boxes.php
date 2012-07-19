@@ -18,7 +18,7 @@ function box_name_show($box_name, $s = '') {
     global $app, $v, $base_template, $page_template;
 
     //maybe this should be in config?
-    $valid_box_names    =   array('his','hers');
+    //$valid_box_names    =   array('his','hers');
 
     // verify that box name exist
     $box = ORM::for_table('boxfools')
@@ -26,9 +26,9 @@ function box_name_show($box_name, $s = '') {
         ->where_gt('status_id', 1)
         ->find_one();
 
-    if($box == false || !in_array($box_name, $valid_box_names)) {
+    if($box == false) {
         $v['page'] = 'error';
-        $app->render($base_template, $v);
+        $app->render($page_template, $v);
     } else{
         $v  =   array_merge($v, array(
             'box_description'   =>  $box->description,
