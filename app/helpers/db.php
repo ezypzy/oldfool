@@ -21,7 +21,7 @@ class Database {
 		ORM::configure('mysql:host='. $this->db_host .';dbname='. $this->db_name);
 		ORM::configure('username', $this->db_user);
 		ORM::configure('password', $this->db_pass);
-		ORM::configure('id_column', '_id');
+		ORM::configure('id_column', 'id');
 	}
 
 }

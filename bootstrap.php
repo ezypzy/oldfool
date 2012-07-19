@@ -23,6 +23,7 @@ $db = new Database();
 $db->connect();
 
 // -- init session
+$user_sess = new Session();
 
 // -- init app
 $app = new Slim(array(
@@ -111,6 +112,83 @@ function newsletter()
 	
 	$app->render($base_template, $v);
 }
+
+
+$app->get('/but-why/', 'cancel_order');
+function cancel_order() {
+	global $app, $v, $user_sess, $page_template;
+	
+	if($user_sess->logged_in) {
+		$sub = ORM::for_table('subscribers')->find_one($user_sess->user_id);
+		$sub->payment = 'cancel';
+		$sub->save();
+
+		$v['sub_name'] = $sub->name;
+		$v['sub_email'] = $sub->email;
+
+		$user_sess->desroy();
+		
+	} else {
+		$app->redirect('/');
+	}
+	
+	$v['page'] = 'cancel_order';
+	$app->render($page_template, $v);
+}
+
+
+
+$app->get('/thank-you-are-awesome/', 'thank_you');
+function thank_you() {
+	global $app, $v, $user_sess, $page_template;
+	
+	if($user_sess->logged_in) {
+		$sub = ORM::for_table('subscribers')->find_one($user_sess->user_id);
+		$sub->payment = 'done';
+		$sub->save();
+
+		$v['sub_name'] = $sub->name;
+		$v['sub_email'] = $sub->email;
+
+		//sendEmail($v['sub_name'], $v['sub_email']);
+		$user_sess->desroy();
+		
+	} else {
+		$app->redirect('/');
+	}
+	
+	$v['page'] = 'thankyou';
+	$app->render($page_template, $v);
+}
+/*
+function sendEmail($realname, $email) {
+	$email_to = $email;
+	$email_bcc = "hello@boxfool.com";
+	$email_from = "hello@boxfool.com";
+	$email_subject = "Thank you for your Boxfool subscription";
+	$email_header = ($email_from != "") ? "Form: " . $email_from . "\r\n" : "";
+	$email_header = ($email_bcc != "") ? "Bcc: " . $email_bcc . "\r\n" : "";
+	$email_message = "Hello {$realname}, \r\n\r\n";
+	$email_message .= "Your Boxfool order has been received. THANK YOU!\r\n";
+	$email_message .= "The Boxfool of Eco will be released on 15 September 2012. We'll keep you notified when it's out!\r\n\r\n";
+	$email_message .= "Your order details are as follows:\r\n";
+	$email_message .= "Boxfool of Eco {ECO01}\r\n";
+	$email_message .= "Quantity: 1\r\n";
+	$email_message .= "Total: RM 60\r\n\r\n";
+	$email_message .= "For order enquiries, feel free to reply to us directly in this email or call (+603) 7887 1709.\r\n\r\n";
+	$email_message .= "Thank you & best regards,\r\n\r\n";
+	$email_message .= "Team Boxfool\r\n";
+  $email_message .= "http://www.boxfool.com\r\n";
+	$email_message .= "http://facebook.com/boxfool\r\n";
+	$email_message .= "twitter.com/boxfool\r\n";
+	if(!mail($email_to, $email_subject, $email_message, $email_header))	{
+		$return = false;
+	} else {
+		$return = true;
+	}
+	return $return;
+}
+ */
 
 require 'app/routes/admin.php';
 require 'app/routes/pages.php';

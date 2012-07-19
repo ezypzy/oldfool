@@ -1,11 +1,10 @@
 
-
 	<!-- form container start -->
 	<div class="row">
 
 		{if="$show_paypal_form == false"}
 
-		<div class="span8">
+		<div class="span6">
 			<h2>Step 1 of 2</h2>
 
 			{if="$form_error"}
@@ -35,10 +34,16 @@
 							<input type="text" class="input-xlarge" name="email" value="{if="$form_submit"}{$input_data["email"]}{/if}">
 						</div>
 					</div>
+					<div class="control-group {if="$form_error"}{$form_error_password}{/if}">
+						<label class="control-label" for="password">Password</label>
+						<div class="controls">
+							<input type="password" class="input-large" name="password">
+						</div>
+					</div>
 					<div class="control-group {if="$form_error"}{$form_error_tel}{/if}">
 						<label class="control-label" for="tel">Contact No.</label>
 						<div class="controls">
-							<input type="text" class="input-medium" name="tel" value="{if="$form_submit"}{$input_data["tel"]}{/if}">
+							<input type="text" class="input-small" name="tel">
 						</div>
 					</div>
 				</fieldset>
@@ -94,7 +99,7 @@
 					</div>
 
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Next Step</button>
+						<button type="submit" class="btn btn-primary">Next</button>
 					</div>
 				</fieldset>
 				
@@ -103,48 +108,33 @@
 
 		{else}
 
-		<div class="span8">
+		<div class="span6">
 			<h2>Step 2 of 2</h2>
-			<p>&nbsp;</p>	
-			<h1>Boxfool of {$box_theme['name']} will be shipped to:</h1>
-			<p>&nbsp;</p>
-			<div class="well">
-				<h2>{$sub_name}</h2>
-				<p>{$sub_address}</p>
-			</div>
-			<p>&nbsp;</p>
-
-			<h3>Click to make payment</h3>
-			<p>&nbsp;</p>
-			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
-				<input type="hidden" name="custom" value="{$sub_email}">
-				<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
 			
-			<!--
+			<h3>Boxfool of {$box_name} will be shipped to:</h3>
+
+			<p><strong>{$sub_name}</strong></p>
+			<p>{$sub_address}</p>
+			
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
+				<input type="hidden" name="hosted_button_id" value="{$box_paypal_button_id}">
 				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
-			-->
 		</div>
 
 		{/if}
 
-		<div class="span4">
-			<h1>Subscribing <small>Boxfool of {$box_theme['name']}</small></h1>
+		<div class="span2">
+			<h1>Subscribing to</h1>
 
 			<div class="thumbnail">
         <img src="http://placehold.it/360x268" alt="">
         <div class="caption">
-					<h5>Boxfool of {$box_theme['name']}</h5>
-					<p>{$box_theme['description']}</p>
-					<h2>RM {$box_theme['price']}</h2>
+					<h5>Boxfools of {$box_name}</h5>
+					<p>{$box_description}</p>
+					<p><strong>RM {$box_price}</strong></p>
 				</div>
       </div>
 		</div>
