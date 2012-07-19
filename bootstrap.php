@@ -161,6 +161,13 @@ function thank_you() {
 	$app->render($page_template, $v);
 }
 
+$app->get('/email-test/', 'email_test');
+function email_test() {
+	echo "email test ";
+	$bla = sendEmail("bla", "jibone@gmail.com");
+	var_dump($bla);
+}
+
 function sendEmail($realname, $email) {
 	$email_to = $email;
 	$email_bcc = "hello@boxfool.com";
