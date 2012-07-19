@@ -99,7 +99,6 @@ function box_subscribe_process($box_theme) {
 				'name' => $app->request()->post('name'),
 				'email' => $app->request()->post('email'),
 				'tel' => $app->request()->post('tel'),
-			//	'quantity' => $app->request()->post('quantity'),
 				'address1' => $app->request()->post('address1'),
 				'address2' => $app->request()->post('address2'),
 				'address3' => $app->request()->post('address3'),
@@ -108,21 +107,6 @@ function box_subscribe_process($box_theme) {
 				'state' => $app->request()->post('state'),
 				'country' => $app->request()->post('country'),
 			);
-			/*
-			if(!v::string($v['input_data']['quantity'], array(
-				'min_length' => 1,
-				'max_length' => 2,
-				'format' => '0-9'
-			))) {
-				$v['form_error'] = true;
-				$v['form_error_quantity'] = 'error';
-				$v['form_error_list'][$i] = array(
-					'field' => 'quantity',
-					'message' => "Quantity error."
-				);
-
-			}
-			*/
 
 			// -- check for duplicate email
 			$s = ORM::for_table('subscribers')
@@ -144,7 +128,6 @@ function box_subscribe_process($box_theme) {
 				$sub->name = $v['input_data']['name'];
 				$sub->email = $v['input_data']['email'];
 				$sub->tel = $v['input_data']['tel'];
-				//$sub->quantity = $v['input_data']['quantity'];
 				$sub->address_1 = $v['input_data']['address1'];
 				$sub->address_2 = $v['input_data']['address2'];
 				$sub->address_3 = $v['input_data']['address3'];
@@ -158,7 +141,6 @@ function box_subscribe_process($box_theme) {
 				$sub->save();
 				$v['sub_name'] = $v['input_data']['name'];
 				$v['sub_email'] = $v['input_data']['email'];
-				$v['sub_q'] = $v['input_data']['quantity'];
 				$address =	$v['input_data']['address1'] ."<br/>".
 										$v['input_data']['address2'] ."<br/>".
 										$v['input_data']['address3'] ."<br/>".
@@ -169,6 +151,8 @@ function box_subscribe_process($box_theme) {
 				$v['sub_address'] = $address;
 				$v['input_data']['paypal_id'] = $box_theme->paypal_button_id;	
 				$v['show_paypal_form'] = true;
+				
+				
 				$user_sess->create($sub->id());
 			}
 		}

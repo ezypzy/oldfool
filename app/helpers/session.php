@@ -56,25 +56,35 @@ class Session extends Database {
 
 	// -- create new session
 	public function create($user_id) {
-		$user = ORM::for_table('subscribers')->find_one($user_id);
-		if($user != false) {
-			$sess = ORM::for_table('sessions')->create();
-			$sess->id = $this->id;
-			$sess->user_id = $user_id;
-			$sess->user_type = 'subscriber';
-			$sess->expired = date('Y-m-d H:i:s', time() + (3 * 60 * 60));
-			$sess->user_agent = $_SERVER['HTTP_USER_AGENT'];
-			$sess->ip_addr = $_SERVER['REMOTE_ADDR'];
-			$sess->created_at = date('Y-m-d H:i:s');
-			if($sess->save()) {
-				$this->logged_in = true;
-				return true;
+		//check if session has already been created
+		$ses = ORM::for_table('sessions')->find_one($this->id);
+
+		if(!$ses) {
+			$user = ORM::for_table('subscribers')->find_one($user_id);
+		
+			if($user != false) {
+				$sess = ORM::for_table('sessions')->create();
+				$sess->id = $this->id;
+				$sess->user_id = $user_id;
+				$sess->user_type = 'subscriber';
+				$sess->expired = date('Y-m-d H:i:s', time() + (3 * 60 * 60));
+				$sess->user_agent = $_SERVER['HTTP_USER_AGENT'];
+				$sess->ip_addr = $_SERVER['REMOTE_ADDR'];
+				$sess->created_at = date('Y-m-d H:i:s');
+				if($sess->save()) {
+					$this->logged_in = true;
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}
-		} else {
-			return false;
 		}
+		else {
+			$ses->user_id = $user_id;
+			$ses->save();
+		}	
 	}
 
 
