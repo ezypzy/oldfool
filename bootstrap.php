@@ -9,6 +9,7 @@ require_once 'vendor/Slim/Slim.php';
 require_once 'vendor/Idiorm/idiorm.php';
 require_once 'vendor/Kirby/kirby.php';
 require_once 'vendor/Rain/rain.tpl.class.php';
+require_once 'vendor/phpmailer/class.phpmailer.php';
 
 require_once 'app/config.php';
 require_once 'app/helpers/db.php';
@@ -168,7 +169,50 @@ function email_test() {
 	var_dump($bla);
 }
 
-function sendEmail($realname, $email) {
+function sendEmail($name, $email) {
+	$mail = new PHPMailer(true); //New instance, with exceptions enabled
+	
+	$email_message = "Hello {$name}, \r\n\r\n";
+	$email_message .= "Your Boxfool order has been received. THANK YOU!\r\n\r\n";
+	$email_message .= "The Boxfool of Eco will be released on 15 September 2012. We'll keep you notified when it's out!\r\n\r\n";
+	$email_message .= "Your order details are as follows:\r\n";
+	$email_message .= "Boxfool of Eco {ECO01}\r\n";
+	$email_message .= "Quantity: 1\r\n";
+	$email_message .= "Total: RM 60\r\n\r\n";
+	$email_message .= "For order enquiries, feel free to reply to us directly in this email or call (+603) 7887 1709.\r\n\r\n";
+	$email_message .= "Thank you & best regards,\r\n\r\n";
+	$email_message .= "Team Boxfool\r\n";
+  $email_message .= "http://www.boxfool.com\r\n";
+	$email_message .= "http://facebook.com/boxfool\r\n";
+	$email_message .= "twitter.com/boxfool\r\n";
+
+	$body = $email_message;
+
+	$mail->IsSMTP();                           // tell the class to use SMTP
+	$mail->Mailer     = 'smtp';
+	$mail->Host       = "ssl://smtp.gmail.com"; // SMTP server
+	$mail->Port       = 465;                    // set the SMTP server port
+	$mail->SMTPAuth   = true;                  // enable SMTP authentication
+	$mail->Username   = "hello@boxfool.com";     // SMTP server username
+	$mail->Password   = "b0xst4rs";            // SMTP server password
+
+
+	// $mail->IsSendmail();  // tell the class to use Sendmail
+
+	$mail->From       = "hello@boxfool.com";
+	$mail->FromName   = "Boxfool Team";
+	$mail->AddReplyTo($mail->From, $mail->FromName);
+	$mail->AddAddress($email);
+	$mail->Subject  = "Thank you for your Boxfool subscription";
+	$mail->Body = $body;
+	$mail->WordWrap   = 80; // set word wrap
+
+	$mail->Send();
+
+
+}
+
+function sendEmail3($realname, $email) {
 	ini_set('sendmail_from', 'hello@boxfool.com'); 
 
 	$email_to = $email;
