@@ -19,9 +19,9 @@ if($_SERVER['SERVER_NAME'] == 'localhost') {
 elseif($_SERVER['SERVER_NAME'] == 'boxfool.dev') {
 	c::set('env', 'development');
 	c::set('db.host', 'localhost');
-	c::set('db.name', 'boxfool');
+	c::set('db.name', 'boxfool_db');
 	c::set('db.user', 'root');
-	c::set('db.pass', 'root');
+	c::set('db.pass', '');
 	c::set('base_url', 'http://boxfool.dev');
 }
 elseif($_SERVER['SERVER_NAME'] == 'dev.boxfool.com') {

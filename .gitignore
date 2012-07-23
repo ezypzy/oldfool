@@ -42,6 +42,7 @@ app/tmp/cache/*
 cache/raintpl/*
 .sass-cache
 .htaccess
+app/config.php
 
 # Misc #
 ###################
