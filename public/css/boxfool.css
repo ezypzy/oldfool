@@ -597,3 +597,35 @@ ul.social-links li {
 	-webkit-box-shadow: 0px 0px 2px 2px #523e21;;
 	box-shadow:         0px 0px 2px 2px #523e21;;
 }
+
+/* login form style */
+.login_form_container {
+	overflow: hidden;
+	width: 420px;
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+.login_form_container .login_left {
+	width: 180px;
+	float: left;
+	text-align: right;
+	margin-top: 45px;
+	padding-right: 10px;
+}
+.login_form_container .login_right {
+	width: 200px;
+	float: right;
+	border-left: 1px solid #523e21;
+	padding-left: 20px;
+}
+
+.boxfool_information_container {
+	overflow: hidden;
+}
+.boxfool_information_container img.boxfool_image {
+	float: left;
+}
+.boxfool_information_container .info_container {
+	float: left;
+}

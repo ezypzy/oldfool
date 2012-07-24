@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<div class="login_form_container">
+			<div class="login_left">
+				<h1>Login</h1>
+				<p>to your Boxfool account</p>
+			</div>
+			<div class="login_right">
+			{if="$form_success"}
+				<div class="alert alert-success">
+					<p><strong>Login success.</strong> Click here to go to your account page.</p>
+				</div>
+			{else}
+				{if="$form_error"}
+				<div class="alert alert-error">
+					<p><strong>Login Error.</strong> Check your email and password.</p>
+				</div>
+				{/if}
+				<form action="" method="post">
+					<label>Email Address</label>
+					<input type="text" name="email" placeholder="Your email" class="input-medium">
+					<label>Password</label>
+					<input type="password" name="password" placeholder="Your password" class="input-medium">
+					<button type="submit" class="btn">Login &rarr;</button>
+				</form>
+			{/if}
+			</div>
+		</div>
+	</div>
+</div>

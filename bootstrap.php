@@ -138,7 +138,7 @@ function cancel_order() {
 }
 
 
-
+// the thank you page
 $app->get('/thank-you-are-awesome/', 'thank_you');
 function thank_you() {
 	global $app, $v, $user_sess, $page_template;
@@ -164,9 +164,10 @@ function thank_you() {
 
 $app->get('/email-test/', 'email_test');
 function email_test() {
-	echo "email test ";
-	$bla = sendEmail("bla", "jibone@gmail.com");
-	var_dump($bla);
+	//echo "email test ";
+	//$bla = sendEmail("bla", "jibone@gmail.com");
+	//var_dump($bla);
+	echo sha1("password123");
 }
 
 function sendEmail($name, $email) {
@@ -188,13 +189,13 @@ function sendEmail($name, $email) {
 
 	$body = $email_message;
 
-	$mail->IsSMTP();                           // tell the class to use SMTP
+	$mail->IsSMTP();														// tell the class to use SMTP
 	$mail->Mailer     = 'smtp';
 	$mail->Host       = "ssl://smtp.gmail.com"; // SMTP server
 	$mail->Port       = 465;                    // set the SMTP server port
-	$mail->SMTPAuth   = true;                  // enable SMTP authentication
-	$mail->Username   = "hello@boxfool.com";     // SMTP server username
-	$mail->Password   = "b0xst4rs";            // SMTP server password
+	$mail->SMTPAuth   = true;										// enable SMTP authentication
+	$mail->Username   = "hello@boxfool.com";		// SMTP server username
+	$mail->Password   = "b0xst4rs";							// SMTP server password
 
 
 	// $mail->IsSendmail();  // tell the class to use Sendmail
@@ -208,43 +209,11 @@ function sendEmail($name, $email) {
 	$mail->WordWrap   = 80; // set word wrap
 
 	$mail->Send();
-
-
 }
-
-function sendEmail3($realname, $email) {
-	ini_set('sendmail_from', 'hello@boxfool.com'); 
-
-	$email_to = $email;
-	$email_bcc = "hello@boxfool.com";
-	$email_from = "hello@boxfool.com";
-	$email_subject = "Thank you for your Boxfool subscription";
-	$email_header = ($email_from != "") ? "Form: " . $email_from . "\r\n" : "";
-	$email_header = ($email_bcc != "") ? "Bcc: " . $email_bcc . "\r\n" : "";
-	$email_message = "Hello {$realname}, \r\n\r\n";
-	$email_message .= "Your Boxfool order has been received. THANK YOU!\r\n";
-	$email_message .= "The Boxfool of Eco will be released on 15 September 2012. We'll keep you notified when it's out!\r\n\r\n";
-	$email_message .= "Your order details are as follows:\r\n";
-	$email_message .= "Boxfool of Eco {ECO01}\r\n";
-	$email_message .= "Quantity: 1\r\n";
-	$email_message .= "Total: RM 60\r\n\r\n";
-	$email_message .= "For order enquiries, feel free to reply to us directly in this email or call (+603) 7887 1709.\r\n\r\n";
-	$email_message .= "Thank you & best regards,\r\n\r\n";
-	$email_message .= "Team Boxfool\r\n";
-  $email_message .= "http://www.boxfool.com\r\n";
-	$email_message .= "http://facebook.com/boxfool\r\n";
-	$email_message .= "twitter.com/boxfool\r\n";
-	if(!mail($email_to, $email_subject, $email_message, $email_header))	{
-		$return = false;
-	} else {
-		$return = true;
-	}
-	return $return;
-}
-
 
 require 'app/routes/admin.php';
 require 'app/routes/pages.php';
+require 'app/routes/subscribers.php';
 require 'app/routes/boxes.php';
 
 $app->run();
