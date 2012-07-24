@@ -197,7 +197,7 @@ function sendEmail($name, $email) {
 	$mail = new PHPMailer(true); //New instance, with exceptions enabled
 	
 	$email_message = "Hello {$name}, \r\n\r\n";
-	$email_message .= "Your Boxfool order has been received. THANK YOU!\r\n\r\n";
+	$email_message .= "Your Boxfool order has been received. Thank you!\r\n\r\n";
 	$email_message .= "The Boxfool of Eco will be released on 15 September 2012. We'll keep you notified when it's out!\r\n\r\n";
 	$email_message .= "Your order details are as follows:\r\n";
 	$email_message .= "Boxfool of Eco {ECO01}\r\n";
@@ -208,7 +208,7 @@ function sendEmail($name, $email) {
 	$email_message .= "Team Boxfool\r\n";
   $email_message .= "http://www.boxfool.com\r\n";
 	$email_message .= "http://facebook.com/boxfool\r\n";
-	$email_message .= "twitter.com/boxfool\r\n";
+	$email_message .= "http://twitter.com/boxfool\r\n";
 
 	$body = $email_message;
 
