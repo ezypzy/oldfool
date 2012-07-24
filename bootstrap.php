@@ -139,8 +139,8 @@ function cancel_order() {
 
 
 // the thank you page
-$app->get('/thank-you-are-awesome/', 'thank_you');
-function thank_you() {
+$app->get('/thank-you-are-awesome/', 'thank_you_paypal');
+function thank_you_paypal() {
 	global $app, $v, $user_sess, $page_template;
 	
 	if($user_sess->logged_in) {
@@ -162,13 +162,36 @@ function thank_you() {
 	$app->render($page_template, $v);
 }
 
+$app->get('/thank-you/', 'thank_you_bank_transfer');
+function thank_you_bank_transfer() {
+	global $app, $v, $user_sess, $page_template;
+
+	if($user_sess->logged_in) {
+		$sub = ORM::for_table('subscribers')->find_one($user_sess->user_id);
+		$sub->payment = 'manual';
+		$sub->save();
+
+		$v['sub_name'] = $sub->name;
+		$v['sub_email'] = $sub->email;
+
+		sendEmailBankTransfer($v['sub_name'], $v['sub_email']);
+		$user_sess->destroy();
+	} else {
+		$app->redirect('/');
+	}
+
+	$v['page'] = 'thankyou_bank';
+	$app->render($page_template, $v);
+}
+
+/*
 $app->get('/email-test/', 'email_test');
 function email_test() {
 	//echo "email test ";
 	//$bla = sendEmail("bla", "jibone@gmail.com");
 	//var_dump($bla);
 	echo sha1("password123");
-}
+}*/
 
 function sendEmail($name, $email) {
 	$mail = new PHPMailer(true); //New instance, with exceptions enabled
@@ -207,6 +230,45 @@ function sendEmail($name, $email) {
 	$mail->Subject  = "Thank you for your Boxfool subscription";
 	$mail->Body = $body;
 	$mail->WordWrap   = 80; // set word wrap
+
+	$mail->Send();
+}
+
+function sendEmailBankTransfer($name, $email) {
+	$mail = new PHPMailer(true);
+
+	$email_message = "Hello {$name}, \r\n\r\n";
+	$email_message .= "Thank you for your order for a Boxfool of Eco (RM60).\r\n\r\n";
+	$email_message .= "You have chosen to make payment via direct bank-in / bank transfer.\r\n";
+	$email_message .= "For your convenience, here are the payment details:\r\n\r\n";
+	$email_message .= "Account No: 247-201-200344-6\r\n";
+	$email_message .= "Name: EzPzy Sdn Bhd\r\n";
+	$email_message .= "Bank: AmBank (M) Berhad\r\n\r\n";
+	$email_message .= "Once transferred, send a scanned image of the bank-in slip or screenshot of the payment confirmation page to hello@boxfool.com.\r\n\r\n";
+	$email_message .= "For order enquiries, feel free to reply to us directly in this email or call (+603) 7887 1709.\r\n\r\n\r\n";
+	$email_message .= "Thank you & best regards,\r\n\r\n";
+	$email_message .= "Team Boxfool\r\n";
+	$email_message .= "http://www.boxfool.com\r\n";
+	$email_message .= "http://facebook.com/boxfool\r\n";
+	$email_message .= "http://twitter.com/boxfool\r\n";
+
+	$body = $email_message;
+
+	$mail->IsSMTP();
+	$mail->Mailer			= 'smtp';
+	$mail->Host				= "ssl://smtp.gmail.com";
+	$mail->Port				= 465;
+	$mail->SMTPAuth		= true;
+	$mail->Username		=	"hello@boxfool.com";
+	$mail->Password		= "b0xst4rs";
+
+	$mail->From				= "hello@boxfool.com";
+	$mail->FromName		= "Boxfoll Team";
+	$mail->AddReplyTo($mail->From, $mail->FromName);
+	$mail->AddAddress($email);
+	$mail->Subject		= "Boxfool bank transfer details";
+	$mail->Body				= $body;
+	$mail->WordWrap		= 80;
 
 	$mail->Send();
 }
