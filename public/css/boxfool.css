@@ -35,7 +35,7 @@ nav#breadcrumb ul {
     margin-left:0;
 }
 nav#breadcrumb li.active {
-    color: #FF145D;
+    color: #090;
 }
 .caps {
     text-transform: uppercase;
@@ -89,6 +89,10 @@ nav#breadcrumb li.active {
 .main-content {
 		background:#fff;
     text-align: justify;
+}
+
+.caption p {
+   	line-height:16px;
 }
 
 footer {

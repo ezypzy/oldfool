@@ -75,7 +75,7 @@ function box_subscribe_process($box_theme) {
 							trim($value) == null) {
 						$v['form_error_list'][$i] = array(
 							'field' => $key, 
-							'message' => $key.' is empty.'
+							'message' => ucfirst($key) . ' is empty.'
 						);
 						$v['form_error_'.$key] = 'error';
 						$v['form_error'] = true;
@@ -85,7 +85,7 @@ function box_subscribe_process($box_theme) {
 						if(!v::email($value)) {
 							$v['form_error_list'][$i] = array(
 								'field' => $key, 
-								'message' => 'Email syntax in incorrect.'
+								'message' => 'Email syntax is incorrect.'
 							);
 							$v['form_error_'.$key] = 'error';
 							$v['form_error'] = true;
@@ -140,11 +140,12 @@ function box_subscribe_process($box_theme) {
 				$sub->modified_on = date('Y-m-d H:i:s');
 				$sub->save();
 				$v['sub_name'] = $v['input_data']['name'];
+				$v['sub_tel'] = $v['input_data']['tel'];
 				$v['sub_email'] = $v['input_data']['email'];
-				$address =	$v['input_data']['address1'] ."<br/>".
-										$v['input_data']['address2'] ."<br/>".
-										$v['input_data']['address3'] ."<br/>".
-										$v['input_data']['postcode'] .", ".
+				$address =	$v['input_data']['address1'] ."<br/>";
+				$address .= !empty($v['input_data']['address2']) ? $v['input_data']['address2'] ."<br/>" : '';
+				$address .= !empty($v['input_data']['address3']) ? $v['input_data']['address3'] ."<br/>" : '';
+				$address .= $v['input_data']['postcode'] .", ".
 										$v['input_data']['city'] ."<br/>".
 										$v['input_data']['state'] .", ".
 										$v['input_data']['country'] .".";

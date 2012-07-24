@@ -10,7 +10,7 @@
 
 			{if="$form_error"}
 			<div class="alert alert-error">
-				<p><strong>Error...</strong></p>
+				<p><strong>Whoops, the form is incomplete. Please check the following:</strong></p>
 				<ol>
 					{loop="form_error_list"}
 					<li>{$value.message}</li>	
@@ -30,13 +30,13 @@
 						</div>
 					</div>
 					<div class="control-group {if="$form_error"}{$form_error_email}{/if}">
-						<label class="control-label" for="email">Email</label>
+						<label class="control-label" for="email">E-mail</label>
 						<div class="controls">
 							<input type="text" class="input-xlarge" name="email" value="{if="$form_submit"}{$input_data["email"]}{/if}">
 						</div>
 					</div>
 					<div class="control-group {if="$form_error"}{$form_error_tel}{/if}">
-						<label class="control-label" for="tel">Contact No.</label>
+						<label class="control-label" for="tel">Telephone</label>
 						<div class="controls">
 							<input type="text" class="input-medium" name="tel" value="{if="$form_submit"}{$input_data["tel"]}{/if}">
 						</div>
@@ -66,13 +66,13 @@
 				  <div class="control-group {if="$form_error"}{$form_error_postcode}{/if}">
 						<label class="control-label" for="postcode">Postcode</label>
 				    <div class="controls">
-				      <input type="text" class="input-small" name="postcode" value="{if="$form_submit"}{$input_data["postcode"]}{/if}">
+				      <input type="text" class="input-small" name="postcode" maxlength="6" value="{if="$form_submit"}{$input_data["postcode"]}{/if}">
 				    </div>
 				  </div>
 				  <div class="control-group {if="$form_error"}{$form_error_city}{/if}">
 						<label class="control-label" for="city">City</label>
 				    <div class="controls">
-				      <input type="text" class="input-medium" name="city" value="{if="$form_submit"}{$input_data["city"]}{/if}">
+				      <input type="text" class="input-medium" name="city" value="{if="$form_submit"}{$input_data["city"]}{/if}" />
 				    </div>
 				  </div>
 				  <div class="control-group {if="$form_error"}{$form_error_state}{/if}">
@@ -93,7 +93,7 @@
 					</div>
 
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Next Step</button>
+						<button type="submit" class="btn btn-primary">Next Step: Payment &#187;</button>
 					</div>
 				</fieldset>
 				
@@ -105,46 +105,75 @@
 		<div class="span8">
 			<h2>Step 2 of 2</h2>
 			<p>&nbsp;</p>	
-			<h1>Boxfool of {$box_theme['name']} will be shipped to:</h1>
+			<h1>Your Boxfool of {$box_theme['name']} will be shipped to:</h1>
 			<p>&nbsp;</p>
 			<div class="well">
 				<h2>{$sub_name}</h2>
 				<p>{$sub_address}</p>
+				<p>Tel: {$sub_tel}<br />
+				E-mail: {$sub_email}</p>
 			</div>
 			<p>&nbsp;</p>
 
-			<h3>Click to make payment</h3>
+			<fieldset>
+				<legend></legend>
+			</fieldset>
+
+			<p>&nbsp;</p>
+			<h3>Click on a payment option below:</h3>
 			<p>&nbsp;</p>
 
-			<!--
-			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
-				<input type="hidden" name="custom" value="{$sub_email}">
-				<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-			-->
+			<div style="width:350px; float:left">
+				<fieldset>
+					<legend><h2>PayPal / Credit Card</h2></legend>
+					<p>&nbsp;</p>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<input type="hidden" name="cmd" value="_s-xclick" />
+						<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}" />
+						<input type="image" style="width:147px; height:47px" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+					</form>
 			
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
-				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		
+					<!--
+					<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
+						<input type="hidden" name="custom" value="{$sub_email}">
+						<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
+					-->
+				</fieldset>
+			</div>
+
+			<div style="width:350px; float:right">
+				<fieldset>
+					<legend><h2>Bank Transfer</h2></legend>
+					<p>&nbsp;</p>
+					<p>Payment can be made via direct bank-in or transfer to:</p>
+					<p style="padding-left:25px;">Account No: <b>247-201-200344-6</b><br />
+					Name: EzyPzy Sdn Bhd<br />
+					Bank: AmBank (M) Berhad</p>
+					<p>Once transferred, send a scanned image of the bank-in slip or screenshot of the payment confirmation page to <a href="mailto:hello@boxfool.com">hello@boxfool.com</a>.</p>
+					<p><input type="button" value="OK I'll do this!" class="btn btn-primary" onclick="javascript:location.href='/eco'" /></p>
+				</fieldset>
+			</div>
+
+			<div style="clear:both"></div>
+			<p>Enquiries? Write to <a href="mailto:hello@boxfool.com">hello@boxfool.com</a></p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>		
 		</div>
 
 		{/if}
 
 		<div class="span4">
-			<h1>Subscribing <small>Boxfool of {$box_theme['name']}</small></h1>
+			<h2>Subscribing to: <small><a href="/eco" style="text-decoration:underline">Boxfool of {$box_theme['name']}</a></small></h2>
 
 			<div class="thumbnail">
-				<img src="{$base_url}/public/images/subscribe_eco.jpg" alt="">
+				<img src="{$base_url}/public/images/subscribe_eco.jpg" alt="" />
         <div class="caption">
-					<h5>Boxfool of {$box_theme['name']}</h5>
-					<p>A box of eco-friendly, nature loving and wholesome organic stuff. Curated by Ninie Ahmad.</p>
+					<p>A Boxfool of eco-friendly, wholesome organic products. Curated by your favorite yoga instructor Ninie Ahmad.</p>
 					<p>Ships 15th September 2012</p>
 					<h2>RM {$box_theme['price']} / box</h2>
 				</div>
