@@ -87,8 +87,8 @@ nav#breadcrumb li.active {
 }
 
 .main-content {
-		background:#fff;
-    text-align: justify;
+		width:940px;
+		margin:auto;
 }
 
 .caption p {
@@ -573,7 +573,7 @@ ul.social-links li {
 	float:left;
 }
 .contact_right {
-	width:450px;
+	width:400px;
 	float:right;
 }
 .msgcontainer {
@@ -637,7 +637,7 @@ ul.social-links li {
 
 /* menu */
 .menuarea {
-	width:800px;
+	width:750px;
 	height:40px;
 	margin:auto;
 	background:#000;
@@ -646,7 +646,7 @@ ul.social-links li {
 }
 
 .menu {
-	width:420px;
+	width:450px;
 	position:relative;
 	margin:auto;
 	padding-right:50px;
@@ -671,7 +671,7 @@ ul.social-links li {
 
 /* landing page */
 .email {
-	width:320px;
+	width:340px;
 	margin:auto;
 	text-align:center;
 	padding-top:30px;
@@ -685,3 +685,32 @@ ul.social-links li {
 	top:-30px;
 	z-index:50;
 }
+
+/* sidebar */
+.sidebar {
+	width:260px;
+	margin:auto;
+	background:#eee;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-radius:5px;
+}
+
+.sidebar_content {
+	width:230px;
+	margin:auto;
+}
+
+.sidebar_icon {
+	float:left;
+	width:20px;
+	height:20px;
+	display:inline;
+}
+
+.sidebar_text {
+	float:right;
+	width:200px;
+	display:inline;
+}
+
