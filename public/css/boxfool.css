@@ -671,8 +671,10 @@ ul.social-links li {
 
 /* landing page */
 .email {
-	width:250px;
+	width:320px;
 	margin:auto;
+	text-align:center;
+	padding-top:30px;
 }
 
 #subscribe {

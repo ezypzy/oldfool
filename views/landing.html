@@ -30,28 +30,28 @@
 		</section>
 	</div>
 
-	<div class="row" style="border:1px solid #900">
-				<div class="email" style="border:1px solid #900">	
+	<div class="row">
+				<div class="email">
+
 					{if="$form_success"}
 					<div class="success">
-						<h2>Thank you, we will keep in touch.</h2>
+						<h2 style="color:#060">Got it, thanks!</h2>
 					</div>
 					{else}
 					<form action="/newsletter/" method="post" class="form-horizontal newsletter-email">
-						<div class="control-group">
-							<label class="control-label" for="email"><strong>YES I WANT AN INVITE!</strong></label>
-							<div class="controls">
-								<div class="input-append">
-									<input type="text" name="email" placeholder="Drop us your e-mail here" />
-									<button class="btn" type="">Submit</button>
-									<p class="help-block">
+						<div>
+							<label for="email"><strong>Yes, keep me updated when new themes are up!</strong></label>
+						</div>
+							<input type="text" name="email" placeholder="Drop us your e-mail here" />
+							<button class="btn" type="">Submit</button>
+								<p class="help-block">
 									{if="$form_error"}
 										{if="$form_error_type['null']"}
 										There's a problem with your email.
 										{/if}
 		
 										{if="$form_error_type['syntax']"}
-										The e-mail format doesn't seem quite right.
+										Hmm, the e-mail format doesn't seem quite right.
 										{/if}
 										
 										{if="$form_error_type['duplication']"}
@@ -62,19 +62,18 @@
 										Oops, a database error has occurred! Please try again.
 										{/if}
 									{/if}
-									</p>
-								</div>
-							</div>
-						</div>	
+								</p>
 					</form>
 					{/if}
 			</div>
 	</div>
 
+	<!--
 	<div class="row">
 		<div class="vid-container">
 			<iframe width="560" height="315" class="vid-box" src="http://www.youtube.com/embed/Ya3kW43s14M" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>
+	-->
 
 </div>
