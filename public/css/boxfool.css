@@ -7,6 +7,9 @@ body {
     -webkit-font-smoothing: antialiased;
     /*text-shadow: 1px 0px 0px rgba(0, 0, 0, 0.5);*/
 }
+.container {
+	width:960px;
+}
 header {
     position:relative;
 }
@@ -36,6 +39,11 @@ nav#breadcrumb ul {
 }
 nav#breadcrumb li.active {
     color: #090;
+}
+.breadcrumb {
+	background-color:#fff;
+	background-image:none;
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 .caps {
     text-transform: uppercase;
@@ -666,7 +674,6 @@ ul.social-links li {
 .menu ul li a {
 	color:#fff;
 	padding:20px;
-	padding-right:50px;
 }
 
 /* landing page */
@@ -714,3 +721,30 @@ ul.social-links li {
 	display:inline;
 }
 
+.numberCircle {
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    border-radius: 999px;
+    behavior: url(PIE.htc);
+
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+
+    background: #fff;
+    border: 2px solid #eee;
+    color: #eee;
+    text-align: center;
+
+    font: 26px Arial, sans-serif
+}
+
+.left {
+	float:left;
+	margin-right:10px;
+}
+
+.right {
+	float:right;
+	margin-left:10px;
+}
