@@ -14,15 +14,17 @@ class Session extends Database {
 	var $user_agent = '';
 	var $ip_addr = '';
 	var $logged_in = false;
+	var $session_type = '';
 
-	function __construct() {
+	function __construct($type = 'session_users') {
+		$this->session_type = $type; 
 		$this->start();
 	}
 
 
 	// -- start session tracking
 	public function start() {
-		session_start();
+		//session_start();
 		$this->id = session_id();
 
 		// -- get rid of expired session first
@@ -43,7 +45,7 @@ class Session extends Database {
 
 	// -- get rid of expired session
 	public function clean() {
-		$sess = ORM::for_table('sessions')
+		$sess = ORM::for_table($this->session_type)
 			->where_lt('expired', date('Y-m-d H:i:s'))
 			->find_many();
 		if($sess != false) {
@@ -57,16 +59,24 @@ class Session extends Database {
 	// -- create new session
 	public function create($user_id) {
 		//check if session has already been created
-		$ses = ORM::for_table('sessions')->find_one($this->id);
-
+		$ses = ORM::for_table($this->session_type)->find_one($this->id);
 		if(!$ses) {
-			$user = ORM::for_table('subscribers')->find_one($user_id);
-		
+			
+			if($this->session_type == 'sessions_users') {
+				$user = ORM::for_table('subscribers')->find_one($user_id);
+				$user_type = "subscriber";
+			}
+
+			if($this->session_type == 'sessions_admins') {
+				$user = ORM::for_table('admins')->find_one($user_id);
+				$user_type = "admin";
+			}
+
 			if($user != false) {
-				$sess = ORM::for_table('sessions')->create();
+				$sess = ORM::for_table($this->session_type)->create();
 				$sess->id = $this->id;
 				$sess->user_id = $user_id;
-				$sess->user_type = 'subscriber';
+				$sess->user_type = $user_type;
 				$sess->expired = date('Y-m-d H:i:s', time() + (3 * 60 * 60));
 				$sess->user_agent = $_SERVER['HTTP_USER_AGENT'];
 				$sess->ip_addr = $_SERVER['REMOTE_ADDR'];
@@ -93,7 +103,7 @@ class Session extends Database {
 		if($id == '') {
 			$id = $this->id;
 		}
-		$sess = ORM::for_table('sessions')->find_one($id);
+		$sess = ORM::for_table($this->session_type)->find_one($id);
 		$sess->set('expired', date('Y-m-d H:i:s', time() + (3 * 60 * 60)));
 		$sess->save();
 	}
@@ -104,7 +114,7 @@ class Session extends Database {
 		if($id == '') {
 			$id = $this->id;
 		}
-		$sess = ORM::for_table('sessions')->find_one($id);
+		$sess = ORM::for_table($this->session_type)->find_one($id);
 		return $sess;
 	}
 
@@ -114,7 +124,7 @@ class Session extends Database {
 		if($id == '') {
 			$id = $this->id;
 		}
-		$sess = ORM::for_table('sessions')->find_one($id);
+		$sess = ORM::for_table($this->session_type)->find_one($id);
 		if($sess != false) {
 			$sess->delete();
 		}

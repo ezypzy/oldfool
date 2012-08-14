@@ -1,0 +1,86 @@
+
+	<!-- update user details container start -->
+	<div class="row">
+		<div class="span10">
+			<div class="page-header">
+				<h1>Update Your Details</h1>
+			</div>
+
+			{if="$form_success"}
+
+				<div class="alert alert-success">
+					<p>Shipping address updated.</p>
+				</div>
+				<div>&larr; <a href="{$base_url}/account">back</a></div>
+
+			{else}
+
+				{if="$form_error"}
+				<div class="alert alert-error">
+					<p>Oppss.. we found some errors.</p>
+				</div>
+				{/if}
+
+				<form action="" class="form-horizontal" method="post">
+					<fieldset>
+						<div class="control-group {if="$form_error_address1"}error{/if}">
+							<label class="control-label">Address</label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" name="address1" value="{$input['address1']}">
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_address2"}error{/if}">
+							<label class="control-label"></label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" name="address2" value="{$input['address2']}">
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_address3"}error{/if}">
+							<label class="control-label"></label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" name="address3" value="{$input['address3']}">
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_postcode"}error{/if}">
+							<label class="control-label">Postcode</label>
+							<div class="controls">
+								<input type="text" class="input-medium" name="postcode" value="{$input['postcode']}">
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_city"}error{/if}">
+							<label class="control-label">City</label>
+							<div class="controls">
+								<input type="text" class="input-medium" name="city" value="{$input['city']}">
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_state"}error{/if}">
+							<label class="control-label">State</label>
+							<div class="controls">
+								<select name="state">
+									<option value="KL" {if="$input['state'] == 'KL'"}selected{/if}>Kuala Lumpur</option>
+									<option value="Selangor" {if="$input['state'] == 'Selangor'"}selected{/if}>Selangor</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_country"}error{/if}">
+							<label class="control-label">Country</label>
+							<div class="controls">
+								<input type="text" class="input-medium uneditable-input" name="country" value="{$input['country']}">
+							</div>
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">Update Details</button>
+						</div>
+					</fieldset>	
+				</form>
+
+			{/if}
+		</div>
+	</div><!-- update user details container ends -->

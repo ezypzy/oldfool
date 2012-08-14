@@ -1,0 +1,55 @@
+
+	<!-- update user details container start -->
+	<div class="row">
+		<div class="span10">
+			<div class="page-header">
+				<h1>Update Your Details</h1>
+			</div>
+
+			{if="$form_success"}
+
+				<div class="alert alert-success">
+					<p>Details updated</p>
+				</div>
+				<div>&larr; <a href="{$base_url}/account">back</a></div>
+
+			{else}
+
+				{if="$form_error"}
+				<div class="alert alert-error">
+					<p>Oppss.. we found some errors.</p>
+				</div>
+				{/if}
+
+				<form action="" class="form-horizontal" method="post">
+					<fieldset>
+						<div class="control-group {if="$form_error_name"}error{/if}">
+							<label class="control-label">Name</label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" name="name" value="{$input['name']}">
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_email"}error{/if}">
+							<label class="control-label">Email</label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" name="email" value="{$input['email']}">
+							</div>
+						</div>
+
+						<div class="control-group {if="$form_error_tel"}error{/if}">
+							<label class="control-label">Contact No.</label>
+							<div class="controls">
+								<input type="text" class="input-medium" name="tel" value="{$input['tel']}">
+							</div>
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">Update Details</button>
+						</div>
+					</fieldset>	
+				</form>
+
+			{/if}
+		</div>
+	</div><!-- update user details container ends -->

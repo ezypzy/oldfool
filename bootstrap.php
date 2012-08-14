@@ -24,7 +24,9 @@ $db = new Database();
 $db->connect();
 
 // -- init session
-$user_sess = new Session();
+session_start();
+$user_sess = new Session('sessions_users');
+$admin_sess = new Session('sessions_admins');
 
 // -- init app
 $app = new Slim(array(
@@ -184,14 +186,14 @@ function thank_you_bank_transfer() {
 	$app->render($page_template, $v);
 }
 
-/*
+
 $app->get('/email-test/', 'email_test');
 function email_test() {
 	//echo "email test ";
 	//$bla = sendEmail("bla", "jibone@gmail.com");
 	//var_dump($bla);
 	echo sha1("password123");
-}*/
+}
 
 function sendEmail($name, $email) {
 	$mail = new PHPMailer(true); //New instance, with exceptions enabled
