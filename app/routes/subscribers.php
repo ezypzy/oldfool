@@ -68,7 +68,7 @@ function account_details() {
 
 
 // -- update user details
-$app->map('/account/update/details/', 'account_update_details')->via('GET', 'POST');
+$app->map('/account/details/', 'account_update_details')->via('GET', 'POST');
 function account_update_details() {
 	global $app, $v, $user_sess, $page_template;
 
@@ -133,7 +133,7 @@ function account_update_details() {
 
 
 // -- update shiping address
-$app->map('/account/update/address/', 'account_update_address')->via('GET', 'POST');
+$app->map('/account/address/', 'account_update_address')->via('GET', 'POST');
 function account_update_address() {
 	global $app, $v, $user_sess, $page_template;
 
@@ -217,7 +217,7 @@ function account_update_address() {
 
 
 // -- change password
-$app->map('/account/change/password', 'account_change_password')->via('GET', 'POST');
+$app->map('/account/password', 'account_change_password')->via('GET', 'POST');
 function account_change_password() {
 	global $app, $v,$user_sess, $page_template;
 
@@ -229,6 +229,47 @@ function account_change_password() {
 	$v['form_success'] = false;
 	$v['form_submit'] = false;
 
+	$v['form_error_old'] = false;
+	$v['form_error_mismatch'] =false;
+
+	if($app->request()->isPost()) {
+		$v['input'] = array(
+			'password_old' => $app->request()->post('password_old'),
+			'password_new' => $app->request()->post('password_new'),
+			'password_confirm' => $app->request()->post('password_confirm')
+		);
+
+		//check old password
+		$sub = ORM::for_table('subscribers')->find_one($user_sess->user_id);
+
+		if(sha1($v['input']['password_old']) != $sub->password) {
+			$v['form_error'] = true;
+			$v['form_error_old'] = true;	
+		}
+
+		if($v['input']['password_new'] == '') {
+			$v['form_error'] = true;
+			$v['form_error_mismatch'] = true;
+		}
+
+		if($v['input']['password_new'] != $v['input']['password_confirm']) {
+			$v['form_error'] = true;
+			$v['form_error_mismatch'] = true;
+		}
+
+		if($v['form_error'] == false) {
+			$sub = ORM::for_table('subscribers')->find_one($user_sess->user_id);
+			$sub->password = sha1($v['input']['password_new']);
+			if($sub->save()) {
+				$v['form_success'] = true; 
+			} else {
+				$v['form_error'] = true;
+				$v['form_error_database'] = true;
+			}
+		}
+	}
+	
+
 	$v['page'] = "account_change_password";
-	$app->render($page_template);
+	$app->render($page_template, $v);
 }

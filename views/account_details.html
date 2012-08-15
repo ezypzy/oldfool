@@ -27,12 +27,12 @@
 				<div><i class="icon-user"></i> {$user_info['name']}</div>
 				<div><i class="icon-envelope"></i> {$user_info['email']}</div>
 				<div>Tel: {$user_info['tel']}</div>
-				<p><a href="{$base_url}/account/update/details">Update Account</a></p>
+				<p><a href="{$base_url}/account/details">Update Account</a></p>
 				<p>&nbsp;</p>
 			</div>
 			<div class="span3">
 				<p class="lead">Your Password</p>
-				<p><a href="{$base_url}/account/change/password">Change Password</a></p>
+				<p><a href="{$base_url}/account/password">Change Password</a></p>
 			</div>
 			<div class="span3">
 				<p class="lead">Shipping Address</p>
@@ -47,9 +47,19 @@
 					{$user_info['postcode']}, {$user_info['city']}<br/>
 					{$user_info['state']}, {$user_info['country']}<br/>
 				</address>
-				<p><a href="{$base_url}/account/update/address">Update address</a></p>
+				<p><a href="{$base_url}/account/address">Update address</a></p>
 			</div>
 		</div>
 	</div><!-- account information container ends -->
+
+	<!-- just a spacer -->
+	<div class="row">
+		<div class="span10">
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+		</div>
+	</div>
 
 	
