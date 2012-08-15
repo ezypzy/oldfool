@@ -34,6 +34,19 @@ function account_login() {
 	$app->render($base_template, $v);
 }
 
+$app->get('/account/logout/', 'account_logout');
+function account_logout() {
+	global $app, $v, $user_sess, $page_template;
+	if(!$user_sess->logged_in) {
+		$app->redirect('/account/login');
+	}
+
+	$user_sess->destroy();
+
+	$v['page'] = "account_logout";
+	$app->render($page_template, $v);
+}
+
 // -- account detail page
 $app->get('/account/', 'account_details');
 function account_details() {
