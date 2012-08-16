@@ -71,3 +71,12 @@ function page_contact()
 	$app->render($page_template, $v);
 }
 
+
+// -- generic blogger page
+$app->get('/bloggers/', 'page_bloggers');
+function page_bloggers() {
+	global $app, $v, $page_template;
+
+	$v['page'] = "page_bloggers";
+	$app->render($page_template, $v);
+}
