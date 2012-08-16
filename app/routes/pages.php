@@ -71,6 +71,15 @@ function page_contact()
 	$app->render($page_template, $v);
 }
 
+// -- ideas page
+$app->get('/ideas/', 'page_ideas');
+function page_ideas() {
+	global $app, $v, $page_template;
+
+	$v['page'] = "page_ideas";
+	$app->render($page_template, $v);
+}
+
 
 // -- generic blogger page
 $app->get('/bloggers/', 'page_bloggers');
