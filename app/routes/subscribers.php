@@ -243,7 +243,9 @@ function account_change_password() {
 	$v['form_submit'] = false;
 
 	$v['form_error_old'] = false;
-	$v['form_error_mismatch'] =false;
+	$v['form_error_mismatch'] = false;
+	$v['form_error_database'] = false;
+	$v['form_error_short'] = false;
 
 	if($app->request()->isPost()) {
 		$v['input'] = array(
@@ -263,6 +265,11 @@ function account_change_password() {
 		if($v['input']['password_new'] == '') {
 			$v['form_error'] = true;
 			$v['form_error_mismatch'] = true;
+		}
+
+		if(strlen($v['input']['password_new']) < 8) {
+			$v['form_error'] = true;
+			$v['form_error_short'] = true;
 		}
 
 		if($v['input']['password_new'] != $v['input']['password_confirm']) {
