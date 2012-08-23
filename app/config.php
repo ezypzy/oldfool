@@ -14,8 +14,6 @@ if($_SERVER['SERVER_NAME'] == 'localhost') {
 	c::set('db.pass', 'root');
 	c::set('base_url', 'http://'. $_SERVER['SERVER_NAME'] .'/boxfool');
 } 
-
-// -- local development settings (jibone)
 elseif($_SERVER['SERVER_NAME'] == 'boxfool.dev') {
 	c::set('env', 'development');
 	c::set('db.host', 'localhost');
@@ -23,6 +21,15 @@ elseif($_SERVER['SERVER_NAME'] == 'boxfool.dev') {
 	c::set('db.user', 'root');
 	c::set('db.pass', '');
 	c::set('base_url', 'http://boxfool.dev');
+}
+// -- local development settings (jibone)
+elseif($_SERVER['SERVER_NAME'] == 'boxfool2.dev') {
+	c::set('env', 'development');
+	c::set('db.host', 'localhost');
+	c::set('db.name', 'boxfool_db');
+	c::set('db.user', 'root');
+	c::set('db.pass', 'root');
+	c::set('base_url', 'http://boxfool2.dev');
 }
 elseif($_SERVER['SERVER_NAME'] == 'dev.boxfool.com') {
 	c::set('env', 'development');
