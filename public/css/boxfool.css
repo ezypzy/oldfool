@@ -445,20 +445,23 @@ ul.social-links li {
     float: left;
     margin-right: 10px;
 }
-.icon-facebook {
+.facebook {
     width:48px;
     height:51px;
     background-position: 0 0;
+	display: block;
 }
-.icon-twitter {
+.twitter {
     width:48px;
     height:51px;
     background-position: -53px 0;
+	display: block;
 }
-.icon-p {
+.pinterest {
     width:48px;
     height:51px;
     background-position: -103px 0;
+	display: block;
 }
 .certified {
     background: url(../images/certified_chop.png) no-repeat;
