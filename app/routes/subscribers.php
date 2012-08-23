@@ -208,22 +208,23 @@ function account_update_address() {
 			}	
 			$i++;	
 		}
-
-		$sub = ORM::for_table('subscribers')->find_one($user_sess->user_id);
-		$sub->address_1 = $v['input']['address1'];
-		$sub->address_2 = $v['input']['address2'];
-		$sub->address_3 = $v['input']['address3'];
-		$sub->postcode = $v['input']['postcode'];
-		$sub->city = $v['input']['city'];
-		$sub->state = $v['input']['state'];
-		$sub->country = $v['input']['country'];
-		if($sub->save()) {
-			$v['form_success'] = true;
-		} else {
-			$v['form_error'] = true;
-			$v['form_error_database'] = true;
+		
+		if($v['form_error'] == false) {
+			$sub = ORM::for_table('subscribers')->find_one($user_sess->user_id);
+			$sub->address_1 = $v['input']['address1'];
+			$sub->address_2 = $v['input']['address2'];
+			$sub->address_3 = $v['input']['address3'];
+			$sub->postcode = $v['input']['postcode'];
+			$sub->city = $v['input']['city'];
+			$sub->state = $v['input']['state'];
+			$sub->country = $v['input']['country'];
+			if($sub->save()) {
+				$v['form_success'] = true;
+			} else {
+				$v['form_error'] = true;
+				$v['form_error_database'] = true;
+			}
 		}
-
 	}	
 	
 	$v['page'] = "account_update_address";
