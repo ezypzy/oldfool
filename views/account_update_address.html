@@ -26,35 +26,35 @@
 						<div class="control-group {if="$form_error_address1"}error{/if}">
 							<label class="control-label">Address</label>
 							<div class="controls">
-								<input type="text" class="input-xlarge" name="address1" value="{$input['address1']}">
+								<input type="text" class="input-xlarge" name="address1" value="{$input['address1']}" maxlength="255" />
 							</div>
 						</div>
 
 						<div class="control-group {if="$form_error_address2"}error{/if}">
 							<label class="control-label"></label>
 							<div class="controls">
-								<input type="text" class="input-xlarge" name="address2" value="{$input['address2']}">
+								<input type="text" class="input-xlarge" name="address2" value="{$input['address2']}" maxlength="255" />
 							</div>
 						</div>
 
 						<div class="control-group {if="$form_error_address3"}error{/if}">
 							<label class="control-label"></label>
 							<div class="controls">
-								<input type="text" class="input-xlarge" name="address3" value="{$input['address3']}">
+								<input type="text" class="input-xlarge" name="address3" value="{$input['address3']}" maxlength="255" />
 							</div>
 						</div>
 
 						<div class="control-group {if="$form_error_postcode"}error{/if}">
 							<label class="control-label">Postcode</label>
 							<div class="controls">
-								<input type="text" class="input-medium" name="postcode" value="{$input['postcode']}">
+								<input type="text" class="input-medium" name="postcode" value="{$input['postcode']}" maxlength="10" />
 							</div>
 						</div>
 
 						<div class="control-group {if="$form_error_city"}error{/if}">
 							<label class="control-label">City</label>
 							<div class="controls">
-								<input type="text" class="input-medium" name="city" value="{$input['city']}">
+								<input type="text" class="input-medium" name="city" value="{$input['city']}" maxlength="255" />
 							</div>
 						</div>
 

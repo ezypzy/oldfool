@@ -296,7 +296,7 @@ function account_change_password() {
 }
 
 
-// -- forgot pssword feature
+// -- forgot password feature
 $app->map('/account/password/forgot/', 'account_password_forgot')->via('GET', 'POST');
 function account_password_forgot() {
 	global $app, $v, $page_template;
