@@ -12,10 +12,12 @@ function account_login() {
 
 	$v['form_error'] = false;
 	$v['form_success'] = false;
+	$v['input_data']['email'] = ''; 
 
 	// -- process login
 	if($app->request()->isPost()) {
 		$email = $app->request()->post('email');
+		$v['input_data']['email'] = $email;
 		$password = $app->request()->post('password');
 		$user = ORM::for_table('subscribers')
 			->where('email', $email)
