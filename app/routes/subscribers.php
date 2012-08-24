@@ -302,6 +302,6 @@ $app->map('/account/password/forgot/', 'account_password_forgot')->via('GET', 'P
 function account_password_forgot() {
 	global $app, $v, $page_template;
 	
-	$v['page'] = "account_password_forgot";
+	$v['page'] = "account_forgot_password";
 	$app->render($page_template, $v);
 }
