@@ -36,34 +36,24 @@ function page_faq()
 
 // -- routes to contact page
 $app->map('/contact/', 'page_contact')->via('POST', 'GET');
-function page_contact()
-{
+function page_contact() {
 	global $app, $v, $page_template;
 
 	$v = array_merge($v, array(
 		'form_success' => false,
+		'form_error' => false,
 		'page' => 'page_contact'
 	));
 
 	if($app->request()->isPost()) {
-		$name = $app->request()->post('contact_name');
-		$email = $app->request()->post('contact_email');
-		$location = $app->request()->post('contact_location');
-		$comment = $app->request()->post('contact_comment'); 
-
-		//$email_to = "hello@boxfool.com";
-		$email_to = "jibone@gmail.com";
-		$email_subject = "Contact form";
-		$email_message = "Email from contact form, \r\n\r\n";
-		$email_message .= "Name: {$name}\r\n";
-		$email_message .= "Email: {$email}\r\n\r\n";
-		$email_message .= "Location: {$location}\r\n";
-		$email_message .= "Message:\r\n";
-		$email_message .= $comment ."\r\n\r\n";
-		$email_header = "From: {$email}\r\n";
-		if (!mail($email_to, $email_subject, $email_message, $email_header)) {
-			die("Cannot send mail.");
-		} else {
+		$data = $app->request()->post();
+		foreach($data as $key => $value) {
+			if($value == '') {
+				$v['form_error'] = true;
+			}
+		}	
+		if($v['form_error'] == false) {
+			sendContactEmail($data);
 			$v['form_success'] = true;
 		}
 	}

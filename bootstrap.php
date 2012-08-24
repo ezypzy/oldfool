@@ -15,6 +15,7 @@ require_once 'app/config.php';
 require_once 'app/helpers/db.php';
 require_once 'app/helpers/view.php';
 require_once 'app/helpers/session.php';
+require_once 'app/helpers/functions.php';
 
 //Custom libraries
 require_once 'app/lib/breadcrumb.php';
