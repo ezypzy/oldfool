@@ -12,6 +12,7 @@ require_once 'vendor/Rain/rain.tpl.class.php';
 require_once 'vendor/phpmailer/class.phpmailer.php';
 
 require_once 'app/config.php';
+
 require_once 'app/helpers/db.php';
 require_once 'app/helpers/view.php';
 require_once 'app/helpers/session.php';
@@ -27,7 +28,6 @@ $db->connect();
 // -- init session
 session_start();
 $user_sess = new Session('sessions_users');
-$admin_sess = new Session('sessions_admins');
 
 // -- init app
 $app = new Slim(array(
@@ -35,11 +35,11 @@ $app = new Slim(array(
     'templates.path'    =>  '../views'
 ));
 
-$bread  =   new Breadcrumb('/');
-$crumb  =   $bread->generate();
+//$bread  =   new Breadcrumb('/');
+//$crumb  =   $bread->generate();
 
 // Change cache dir from "tmp" to "cache"
-RainTPL::$cache_dir =   'cache';
+//RainTPL::$cache_dir =   'cache';
 
 // -- init the view data
 $v = array(
@@ -52,15 +52,9 @@ $v = array(
     'window_title'  =>  'Discover Boxfools of Awesomeness Every Quarter'
 );
 
-function debug($args)
-{
-    echo '<pre>';
-    print_r($args);
-    echo '</pre>';
-}
 
-$base_template  =   'layout';
-$page_template  =   'page';
+//$base_template  =   'layout';
+//$page_template  =   'page';
 
 $app->get('/', 'landing');
 function landing()

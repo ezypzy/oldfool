@@ -45,8 +45,6 @@ boxfool/cache/*
 cockpit/app/config.php
 cockpit/cache/*
 !cockpit/cache/index.php
-.sass-cache
-.htaccess
 
 # Misc #
 ###################

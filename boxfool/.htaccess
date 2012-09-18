@@ -1,0 +1,17 @@
+# -- PHP Slim rewrite --
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^css/(.*) public/css/$1 [L]
+  RewriteRule ^js/(.*) public/js/$1 [L]
+  RewriteRule ^img/(.*) public/img/$1 [L]
+  RewriteRule ^font/(.*) public/font/$1 [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ bootstrap.php [QSA,L]
+</IfModule>
+
+# -- make MT (gs) server use the latest PHP version --
+#AddHandler php5latest-script .php
+
+php_value safe_mode on
+

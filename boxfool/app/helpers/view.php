@@ -62,7 +62,7 @@ class RainView extends Slim_View {
 	/**
 	 * @var string The path to the cache folder WITH the trailing slash
 	 */
-	public static $rainCacheDirectory = 'cache/raintpl/';
+	public static $rainCacheDirectory = 'cache/';
 	
 	/**
 	 * @var string The base url for the project .dev for local dev .com for live
