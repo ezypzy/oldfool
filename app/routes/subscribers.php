@@ -301,7 +301,47 @@ function account_change_password() {
 $app->map('/account/password/forgot/', 'account_password_forgot')->via('GET', 'POST');
 function account_password_forgot() {
 	global $app, $v, $page_template;
+
+	$v['form_success'] = false;
+	$v['form_error'] = false;
+
+	if($app->request()->isPost()) {
+		// -- check for email
+		$v['input_data']['email'] = $app->request()->post();
+		$sub = ORM::for_table('subscribers')
+			->where('email', $v['input_data']['email'])
+			->find_one();
+		if($sub) {
+			// create random link
+			$reset_code = uniqid().md5($sub->email);
+			$reset = ORM::for_table('password_reset_codes')->create();
+			$reset->id = $reset_code;
+			$reset->email = $sub->email;
+			$reset->subscriber_id = $sub->id;
+			$reset->expired = date('Y-m-d H:i:s', time() + (3 * 60 * 60));			
+			$reset->save();
+
+			$data = array(
+				'name' => $sub->name,
+				'random_link' => "http://boxfool.com/account/password/reset/".$reset_code,
+				'to_email' => $sub->email
+			);
+
+			// -- send email with instruction 
+			sendResetInstruction($data);
+			
+		} else {
+			
+		}
+	}
 	
 	$v['page'] = "account_forgot_password";
 	$app->render($page_template, $v);
+}
+
+
+$app->get('/account/password/reset/:code', 'account_password_reset');
+function account_password_reset($code) {
+	// check the code with db
+	$reset = ORM::for_table('password_reset_codes')->find_one()
 }
