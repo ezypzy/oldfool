@@ -1,0 +1,65 @@
+<?php if(!class_exists('raintpl')){exit;}?><!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+<head>
+<title>Discover a Boxfool of Surprise - curated and delivered to you every quarter.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="/css/bootstrap.css" rel="stylesheet" />
+<link href="/css/font-awesome.css" rel="stylesheet" />
+<!--link href="/css/bootstrap-responsive.css" rel="stylesheet" /-->
+<link href="/css/boxfool.css" rel="stylesheet" />
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!-- facebook media stuff -->
+<meta property="og:url" content="<?php echo $base_url;?>" />
+<meta property="og:title" content="Boxfool of Surprises" />
+<meta property="og:description" content="Boxfool sends you a pack of awesome surprises every 3 months. Based around specific themes, all Boxfool items are handpicked by our panel of Boxstars - influential individuals who are interesting, original, cultured and generally have good taste." />
+<meta property="og:image" content="<?php echo $base_url;?>/images/boxfool-fb-logo.jpeg" />
+<!-- Lightbox -->
+<script src="/js/vendor/lightbox/js/lightbox.js"></script>
+<link href="/js/vendor/lightbox/css/lightbox.css" rel="stylesheet" />
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33184595-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+    <div class="container home">
+	    	<div class="row menuarea"></div>
+				<div class="menu">
+	      		<ul>
+							<li><a href="/">Home</a></li>
+							<li><a href="/eco">Boxfool of Eco</a></li>
+							<li><a href="/about">About</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="/contact">Contact</a></li>
+							<!--li><a href="#">Login</a></li-->
+						</ul>
+				</div> <!-- .menu -->
+
+        <div class="row" style="z-index:100; position:relative; top:-30px">
+            <header class="span12">
+                <a href="/" class="logo sprite"><i class="sprite beta"></i></a>
+                <div id="login_box">
+                    <form method="post" action="/login/">
+                        <p><input required="required" type="text" name="email" placeholder="Email" /></p>
+                        <p><input required="required" type="password" name="password" placeholder="Password" /></p>
+                        <p><button type="submit" class="btn btn-inverse"><i class="icon-white icon-user"></i> Login</button></p>
+                    </form>
+                    <span class="login-close"></span>
+								</div>
+								<!--
+                <a href="javascript:void(0);" rel="nofollow" id="login_link"><i class="icon-black icon-user"></i> Login</a>
+								-->		
+						</header>
+        </div>
+    </div>
