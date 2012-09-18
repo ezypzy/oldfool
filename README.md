@@ -3,11 +3,11 @@ boxfool
 
 Boxfool of Surprises - Discover awesome stuff every quarter
 
-## Frontend
+#### Frontend
 Codes are in the directory boxfool.
 
-## Cockpit
+#### Cockpit
 Admin Panel are in the directory Cockpit.
 
-## Docs
+#### Docs
 All other misc files.

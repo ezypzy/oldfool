@@ -38,8 +38,10 @@ Thumbs.db
 
 # Ignore some config files #
 ############################
-app/tmp/cache/*
-cache/raintpl/*
+boxfool/app/config.php
+boxfool/cache/*
+cockpit/app/config.php
+cocakpit/cache/*
 .sass-cache
 .htaccess
 
