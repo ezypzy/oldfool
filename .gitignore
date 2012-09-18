@@ -40,8 +40,10 @@ Thumbs.db
 ############################
 boxfool/app/config.php
 boxfool/cache/*
+!boxfool/cache/index.php
 cockpit/app/config.php
-cocakpit/cache/*
+cockpit/cache/*
+!cockpit/cache/index.php
 .sass-cache
 .htaccess
 
