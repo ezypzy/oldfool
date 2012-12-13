@@ -343,5 +343,5 @@ function account_password_forgot() {
 $app->get('/account/password/reset/:code', 'account_password_reset');
 function account_password_reset($code) {
 	// check the code with db
-	$reset = ORM::for_table('password_reset_codes')->find_one()
+	$reset = ORM::for_table('password_reset_codes')->find_one();
 }
