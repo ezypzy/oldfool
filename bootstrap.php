@@ -49,7 +49,7 @@ $v = array(
     'is_home'       =>  false,
     'page'          =>  'blank',
     'tweetfools'    =>  'tweetfools',
-    'window_title'  =>  'Discover Boxfools of Awesomeness Every Quarter'
+    'window_title'  =>  'Discover a Boxfool of Surprise - curated and delivered to you every quarter.'
 );
 
 function debug($args)
@@ -201,7 +201,7 @@ function sendEmail($name, $email) {
 	
 	$email_message = "Hello {$name}, \r\n\r\n";
 	$email_message .= "Your Boxfool order has been received. Thank you!\r\n\r\n";
-	$email_message .= " We'll keep you notified when it's out!\r\n\r\n";
+	$email_message .= "We'll keep you notified when it's out!\r\n\r\n";
 	$email_message .= "Boxfool of Hip Hop {HIP01}\r\n";
 	$email_message .= "Quantity: 1\r\n";
 	$email_message .= "Total: RM 60\r\n\r\n";
@@ -226,7 +226,7 @@ function sendEmail($name, $email) {
 	// $mail->IsSendmail();  // tell the class to use Sendmail
 
 	$mail->From       = "hello@boxfool.com";
-	$mail->FromName   = "Boxfool Team";
+	$mail->FromName   = "Boxfool";
 	$mail->AddReplyTo($mail->From, $mail->FromName);
 	$mail->AddAddress($email);
 	$mail->Subject  = "Thank you for your Boxfool subscription";
@@ -265,10 +265,10 @@ function sendEmailBankTransfer($name, $email) {
 	$mail->Password		= "b0xst4rs";
 
 	$mail->From				= "hello@boxfool.com";
-	$mail->FromName		= "Boxfoll Team";
+	$mail->FromName		= "Boxfool";
 	$mail->AddReplyTo($mail->From, $mail->FromName);
 	$mail->AddAddress($email);
-	$mail->Subject		= "Boxfool bank transfer details";
+	$mail->Subject		= "Boxfool Bank Transfer Details";
 	$mail->Body				= $body;
 	$mail->WordWrap		= 80;
 
