@@ -201,9 +201,8 @@ function sendEmail($name, $email) {
 	
 	$email_message = "Hello {$name}, \r\n\r\n";
 	$email_message .= "Your Boxfool order has been received. Thank you!\r\n\r\n";
-	$email_message .= "The Boxfool of Eco will be released on 15 September 2012. We'll keep you notified when it's out!\r\n\r\n";
-	$email_message .= "Your order details are as follows:\r\n";
-	$email_message .= "Boxfool of Eco {ECO01}\r\n";
+	$email_message .= " We'll keep you notified when it's out!\r\n\r\n";
+	$email_message .= "Boxfool of Hip Hop {HIP01}\r\n";
 	$email_message .= "Quantity: 1\r\n";
 	$email_message .= "Total: RM 60\r\n\r\n";
 	$email_message .= "For order enquiries, feel free to reply to us directly in this email or call (+603) 7887 1709.\r\n\r\n";
@@ -241,7 +240,7 @@ function sendEmailBankTransfer($name, $email) {
 	$mail = new PHPMailer(true);
 
 	$email_message = "Hello {$name}, \r\n\r\n";
-	$email_message .= "Thank you for your order for a Boxfool of Eco (RM60).\r\n\r\n";
+	$email_message .= "Thank you for your order for a Boxfool of Hip Hop (RM60).\r\n\r\n";
 	$email_message .= "You have chosen to make payment via direct bank-in / bank transfer.\r\n";
 	$email_message .= "For your convenience, here are the payment details:\r\n\r\n";
 	$email_message .= "Account No: 247-201-200344-6\r\n";

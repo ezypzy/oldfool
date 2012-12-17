@@ -130,16 +130,16 @@
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 						<input type="hidden" name="cmd" value="_s-xclick" />
 						<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}" />
-						<input type="image" style="width:147px; height:47px" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+						<p style="text-align:center"><input type="image" style="width:147px; height:47px" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" /></p>
 						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
 					</form>
 			
-					<!--
+					<!-- SANDBOX VERSION FOR TESTING
 					<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 						<input type="hidden" name="cmd" value="_s-xclick">
 						<input type="hidden" name="hosted_button_id" value="{$input_data['paypal_id']}">
 						<input type="hidden" name="custom" value="{$sub_email}">
-						<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<div style="padding-left:50px"><input type="image" style="width:147px; height:47px" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></div>
 						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 					</form>
 					-->
@@ -168,12 +168,11 @@
 		{/if}
 
 		<div class="span4">
-			<h2>Subscribing to:<br />
-			<small><a href="/eco" style="text-decoration:underline">Boxfool of {$box_theme['name']}</a></small></h2>
 
 			<div class="thumbnail">
-				<img src="{$base_url}/public/images/boxstar_jinhackman-sidebar.jpg" alt="" />
+				<img src="{$base_url}/public/images/boxstar_jinhackman-sidebar.jpg" alt="" style="padding-top:30px" />
         <div class="caption">
+					<h2><a href="/hiphop" style="text-decoration:underline">Boxfool of {$box_theme['name']}</a></h2>
 					<p>Everything you need to survive Raising The Bar Festival. Curated by rapper Jin Hackman.</p>
 					<p>Ships 31st December 2012</p>
 					<h2>RM {$box_theme['price']} / box</h2>
